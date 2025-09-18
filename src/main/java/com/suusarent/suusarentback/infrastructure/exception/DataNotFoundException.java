@@ -1,4 +1,4 @@
-package ee.bcs.bank38back.infrastructure.exception;
+package com.suusarent.suusarentback.infrastructure.exception;
 
 import lombok.Getter;
 

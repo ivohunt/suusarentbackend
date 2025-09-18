@@ -1,4 +1,4 @@
-package ee.bcs.bank38back.infrastructure.error;
+package com.suusarent.suusarentback.infrastructure.error;
 
 import lombok.Data;
 

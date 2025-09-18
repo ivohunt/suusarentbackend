@@ -1,9 +1,9 @@
-package ee.bcs.bank38back.infrastructure;
+package com.suusarent.suusarentback.infrastructure;
 
-import ee.bcs.bank38back.infrastructure.error.ApiError;
-import ee.bcs.bank38back.infrastructure.exception.DataNotFoundException;
-import ee.bcs.bank38back.infrastructure.exception.ForbiddenException;
-import ee.bcs.bank38back.infrastructure.exception.PrimaryKeyNotFoundException;
+import com.suusarent.suusarentback.infrastructure.error.ApiError;
+import com.suusarent.suusarentback.infrastructure.exception.DataNotFoundException;
+import com.suusarent.suusarentback.infrastructure.exception.ForbiddenException;
+import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
