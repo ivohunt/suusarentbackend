@@ -8,8 +8,7 @@ public interface UserMapper {
 
 
 
-    @Mapping(source = "email", target = "email")
-    @Mapping(source = "password", target = "password")
-    @Mapping(source = "status", target = "status")
+    @Mapping(source = "id", target = "userId")
+    @Mapping(source = "role.name", target = "roleName")
     LoginResponse toLoginResponse(User user);
 }
