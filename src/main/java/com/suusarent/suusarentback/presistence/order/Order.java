@@ -21,6 +21,10 @@ public class Order {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Size(max = 10)
+    @Column(name = "order_number", length = 10)
+    private String orderNumber;
+
     @Column(name = "start")
     private LocalDate start;
 
