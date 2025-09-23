@@ -7,6 +7,10 @@ public enum Error {
     INCORRECT_CREDENTIALS("Vale kasutajanimi või parool", 111),
     EMAIL_ALREADY_EXISTS("Sellise emailiga kasutaja on juba süsteemis olemas", 333);
 
+
+
+
+
     private final String message;
     private final int errorCode;
 

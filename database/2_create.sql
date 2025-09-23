@@ -5,7 +5,7 @@
 -- Table: category
 CREATE TABLE category
 (
-    id        int           NOT NULL,
+    id        serial           NOT NULL,
     name      varchar(255)  NOT NULL,
     price     decimal(5, 2) NOT NULL,
     size_type varchar(5)    NOT NULL,
