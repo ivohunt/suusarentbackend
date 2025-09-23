@@ -1,4 +1,4 @@
-package com.suusarent.suusarentback.controller;
+package com.suusarent.suusarentback.controller.login.dto;
 
 import lombok.Data;
 

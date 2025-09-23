@@ -24,6 +24,21 @@ public class User {
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
+    @Size(max = 255)
+    @NotNull
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Size(max = 255)
+    @NotNull
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    @Size(max = 16)
+    @NotNull
+    @Column(name = "phone", nullable = false, length = 16)
+    private String phone;
+
     @Size(max = 16)
     @NotNull
     @Column(name = "password", nullable = false, length = 16)
@@ -42,5 +57,4 @@ public class User {
     @NotNull
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
-
 }

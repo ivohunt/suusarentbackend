@@ -95,6 +95,9 @@ CREATE TABLE "user"
 (
     id         serial       NOT NULL,
     role_id    int          NOT NULL,
+    first_name varchar(255) NOT NULL,
+    last_name  varchar(255) NOT NULL,
+    phone      varchar(16)  NOT NULL,
     password   varchar(16)  NOT NULL,
     email      varchar(255) NOT NULL,
     status     varchar(1)   NOT NULL,
