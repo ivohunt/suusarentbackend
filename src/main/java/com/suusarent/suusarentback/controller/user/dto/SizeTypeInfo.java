@@ -1,5 +1,6 @@
-package com.suusarent.suusarentback.presistence.size;
+package com.suusarent.suusarentback.controller.user.dto;
 
+import com.suusarent.suusarentback.presistence.size.Size;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

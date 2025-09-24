@@ -3,7 +3,7 @@ package com.suusarent.suusarentback.controller.category;
 
 import com.suusarent.suusarentback.controller.category.dto.CategoryDto;
 import com.suusarent.suusarentback.infrastructure.error.ApiError;
-import com.suusarent.suusarentback.presistence.size.SizeTypeInfo;
+import com.suusarent.suusarentback.controller.user.dto.SizeTypeInfo;
 import com.suusarent.suusarentback.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

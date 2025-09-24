@@ -27,9 +27,9 @@ public class Category {
     @Column(name = "price", nullable = false, precision = 5, scale = 2)
     private BigDecimal price;
 
-    @Size(max = 5)
+    @Size(max = 10)
     @NotNull
-    @Column(name = "size_type", nullable = false, length = 5)
+    @Column(name = "size_type", nullable = false, length = 10)
     private String sizeType;
 
 }

@@ -23,4 +23,8 @@ public class CategoryDto implements Serializable {
 
     @NotNull
     private BigDecimal price;
+
+    @NotNull
+    @Size(max = 10)
+    private String sizeType;
 }

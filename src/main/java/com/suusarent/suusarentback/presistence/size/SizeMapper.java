@@ -1,5 +1,6 @@
 package com.suusarent.suusarentback.presistence.size;
 
+import com.suusarent.suusarentback.controller.user.dto.SizeTypeInfo;
 import org.mapstruct.*;
 
 import java.util.List;

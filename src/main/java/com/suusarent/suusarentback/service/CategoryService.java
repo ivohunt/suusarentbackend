@@ -9,7 +9,7 @@ import com.suusarent.suusarentback.presistence.category.CategoryRepository;
 import com.suusarent.suusarentback.presistence.size.Size;
 import com.suusarent.suusarentback.presistence.size.SizeMapper;
 import com.suusarent.suusarentback.presistence.size.SizeRepository;
-import com.suusarent.suusarentback.presistence.size.SizeTypeInfo;
+import com.suusarent.suusarentback.controller.user.dto.SizeTypeInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +30,7 @@ public class CategoryService {
             throw new ForbiddenException(Error.CATEGORY_ALREADY_EXISTS.getMessage(), Error.CATEGORY_ALREADY_EXISTS.getErrorCode());
         }
         Category category = categoryMapper.toCategoryDto(categoryDto);
+
         categoryRepository.save(category);
 
     }

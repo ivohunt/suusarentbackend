@@ -12,5 +12,6 @@ public interface CategoryMapper {
 
     @Mapping(source = "name", target = "name")
     @Mapping(source = "price", target = "price")
+    @Mapping(source = "sizeType", target = "sizeType")
     Category toCategoryDto(CategoryDto categoryDto);
 }
