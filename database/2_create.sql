@@ -15,7 +15,7 @@ CREATE TABLE category
 -- Table: item
 CREATE TABLE item
 (
-    id           int          NOT NULL,
+    id           serial          NOT NULL,
     category_id  int          NOT NULL,
     status       varchar(3)   NOT NULL,
     notes        varchar(500) NULL,
@@ -83,9 +83,9 @@ CREATE TABLE role
 -- Table: size
 CREATE TABLE size
 (
-    id        int         NOT NULL,
+    id        serial         NOT NULL,
     name      varchar(16) NOT NULL,
-    size_type varchar(5)  NOT NULL,
+    size_type varchar(10)  NOT NULL,
     sequence  int         NOT NULL,
     CONSTRAINT size_pk PRIMARY KEY (id)
 );

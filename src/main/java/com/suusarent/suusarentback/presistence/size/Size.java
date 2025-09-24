@@ -22,7 +22,7 @@ public class Size {
 
     @jakarta.validation.constraints.Size(max = 5)
     @NotNull
-    @Column(name = "size_type", nullable = false, length = 5)
+    @Column(name = "size_type", nullable = false, length = 10)
     private String sizeType;
 
     @NotNull
