@@ -2,14 +2,16 @@ package com.suusarent.suusarentback.service;
 
 import com.suusarent.suusarentback.Error;
 import com.suusarent.suusarentback.controller.category.dto.CategoryDto;
+import com.suusarent.suusarentback.controller.category.dto.CategoryInfos;
+import com.suusarent.suusarentback.controller.user.dto.SizeTypeInfo;
 import com.suusarent.suusarentback.infrastructure.exception.ForbiddenException;
+import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundException;
 import com.suusarent.suusarentback.presistence.category.Category;
 import com.suusarent.suusarentback.presistence.category.CategoryMapper;
 import com.suusarent.suusarentback.presistence.category.CategoryRepository;
 import com.suusarent.suusarentback.presistence.size.Size;
 import com.suusarent.suusarentback.presistence.size.SizeMapper;
 import com.suusarent.suusarentback.presistence.size.SizeRepository;
-import com.suusarent.suusarentback.controller.user.dto.SizeTypeInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryService {
 
+    private static final String REQUEST_PARAM_CATEGORY_ID = "categoryId";
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
     private final SizeRepository sizeRepository;
@@ -38,5 +41,17 @@ public class CategoryService {
     public List<SizeTypeInfo> findSizeTypes() {
         List<Size> sizes = sizeRepository.findAll();
         return sizeMapper.toSizeTypeInfos(sizes);
+    }
+
+    public List<CategoryInfos> getCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        return categoryMapper.toCategoryInfos(categories);
+    }
+
+    public void deleteCategory(Integer categoryId) {
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new PrimaryKeyNotFoundException(REQUEST_PARAM_CATEGORY_ID, categoryId));
+        categoryRepository.delete(category);
+        categoryRepository.save(category);
     }
 }
