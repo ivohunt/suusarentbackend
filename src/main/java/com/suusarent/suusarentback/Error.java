@@ -5,10 +5,8 @@ import lombok.Getter;
 @Getter
 public enum Error {
     INCORRECT_CREDENTIALS("Vale kasutajanimi või parool", 111),
-    EMAIL_ALREADY_EXISTS("Sellise emailiga kasutaja on juba süsteemis olemas", 333);
-
-
-
+    EMAIL_ALREADY_EXISTS("Sellise emailiga kasutaja on juba süsteemis olemas", 333),
+    CATEGORY_ALREADY_EXISTS("Sellise nimega kategooria on juba süsteemis olemas",222 );
 
 
     private final String message;
@@ -19,4 +17,4 @@ public enum Error {
         this.errorCode = errorCode;
     }
 
-}
+    }

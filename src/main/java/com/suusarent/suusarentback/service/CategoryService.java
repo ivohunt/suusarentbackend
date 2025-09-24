@@ -19,7 +19,7 @@ public class CategoryService {
 
     public void addCategory(CategoryDto categoryDto) {
         if (categoryRepository.existsByName(categoryDto.getName())) {
-            throw new ForbiddenException(Error.EMAIL_ALREADY_EXISTS.getMessage(), Error.EMAIL_ALREADY_EXISTS.getErrorCode());
+            throw new ForbiddenException(Error.CATEGORY_ALREADY_EXISTS.getMessage(), Error.CATEGORY_ALREADY_EXISTS.getErrorCode());
         }
         Category category = categoryMapper.toCategoryDto(categoryDto);
         categoryRepository.save(category);
