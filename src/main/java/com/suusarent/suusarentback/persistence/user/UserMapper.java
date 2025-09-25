@@ -16,6 +16,7 @@ public interface UserMapper {
 
     @Mapping(source = "id", target = "userId")
     @Mapping(source = "role.name", target = "roleName")
+//    @Mapping(source = "", target = "token")
     LoginResponse toLoginResponse(User user);
 
 

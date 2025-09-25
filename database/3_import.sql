@@ -13,9 +13,9 @@ INSERT INTO suusarent.size_type (id, name) VALUES (default, 'Kiivri suurused');
 
 
 INSERT INTO suusarent.category (id, size_type_id, name, price) VALUES (default, 1, 'Mäesuusad', 20.00);
-INSERT INTO suusarent.category (id, size_type_id, name, price) VALUES (default, 2, 'Mäesaapad', 10.00);
+INSERT INTO suusarent.category (id, size_type_id, name, price) VALUES (default, 2, 'Mäesuusasaapad', 10.00);
 INSERT INTO suusarent.category (id, size_type_id, name, price) VALUES (default, 3, 'Lumelauad', 10.00);
-INSERT INTO suusarent.category (id, size_type_id, name, price) VALUES (default, 2, 'Lumesaapad', 10.00);
+INSERT INTO suusarent.category (id, size_type_id, name, price) VALUES (default, 2, 'Lumelauasaapad', 10.00);
 INSERT INTO suusarent.category (id, size_type_id, name, price) VALUES (default, 4, 'Kiivrid', 10.00);
 
 

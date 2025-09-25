@@ -35,7 +35,6 @@ public class CategoryService {
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new PrimaryKeyNotFoundException(REQUEST_PARAM_CATEGORY_ID, categoryId));
         categoryRepository.delete(category);
-        categoryRepository.save(category);
     }
 
     public void addCategory(CategoryDto categoryDto) {
