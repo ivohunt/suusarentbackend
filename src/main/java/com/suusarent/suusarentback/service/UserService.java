@@ -27,7 +27,7 @@ public class UserService {
         Role role = roleRepository.getRoleCustomer();
         User user = userMapper.toUser(userDto);
         user.setRole(role);
-        userRepository.save(user);;
+        userRepository.save(user);
     }
 
 }
