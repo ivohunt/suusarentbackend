@@ -1,49 +1,43 @@
-package com.suusarent.suusarentback.presistence.order;
+package com.suusarent.suusarentback.persistence.item;
 
-import com.suusarent.suusarentback.presistence.user.User;
+import com.suusarent.suusarentback.persistence.category.Category;
+import com.suusarent.suusarentback.persistence.equipmentsize.EquipmentSize;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.LocalDate;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "\"order\"", schema = "suusarent")
-public class Order {
+@Table(name = "item", schema = "suusarent")
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 10)
-    @Column(name = "order_number", length = 10)
-    private String orderNumber;
-
-    @Column(name = "start")
-    private LocalDate start;
-
-    @Column(name = "\"end\"")
-    private LocalDate end;
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
     @Size(max = 3)
     @NotNull
     @Column(name = "status", nullable = false, length = 3)
     private String status;
 
-    @NotNull
-    @Column(name = "total_price", nullable = false, precision = 7, scale = 2)
-    private BigDecimal totalPrice;
+    @Size(max = 500)
+    @Column(name = "notes", length = 500)
+    private String notes;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "size_id", nullable = false)
+    private EquipmentSize equipmentSize;
 
     @NotNull
     @Column(name = "created_at", nullable = false)
@@ -52,5 +46,9 @@ public class Order {
     @NotNull
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
+
+    @NotNull
+    @Column(name = "is_available", nullable = false)
+    private Boolean isAvailable = false;
 
 }

@@ -1,6 +1,6 @@
-package com.suusarent.suusarentback.presistence.itemimage;
+package com.suusarent.suusarentback.persistence.itemimage;
 
-import com.suusarent.suusarentback.presistence.item.Item;
+import com.suusarent.suusarentback.persistence.item.Item;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

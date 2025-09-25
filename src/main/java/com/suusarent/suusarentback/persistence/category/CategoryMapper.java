@@ -1,7 +1,7 @@
-package com.suusarent.suusarentback.presistence.category;
+package com.suusarent.suusarentback.persistence.category;
 
 import com.suusarent.suusarentback.controller.category.dto.CategoryDto;
-import com.suusarent.suusarentback.controller.category.dto.CategoryInfos;
+import com.suusarent.suusarentback.controller.category.dto.CategoryInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -13,16 +13,15 @@ import java.util.List;
 public interface CategoryMapper {
 
 
-    @Mapping(source = "name", target = "name")
+    @Mapping(source = "categoryName", target = "name")
     @Mapping(source = "price", target = "price")
-    @Mapping(source = "sizeType", target = "sizeType")
     Category toCategoryDto(CategoryDto categoryDto);
 
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "name", target = "name")
+    @Mapping(source = "id", target = "categoryId")
+    @Mapping(source = "name", target = "categoryName")
     @Mapping(source = "price", target = "price")
-    CategoryInfos toCategoryInfo(Category category);
+    CategoryInfo toCategoryInfo(Category category);
 
-    List<CategoryInfos> toCategoryInfos(List<Category> categories);
+    List<CategoryInfo> toCategoryInfos(List<Category> categories);
 
 }

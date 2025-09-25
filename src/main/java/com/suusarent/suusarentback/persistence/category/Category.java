@@ -1,5 +1,6 @@
-package com.suusarent.suusarentback.presistence.category;
+package com.suusarent.suusarentback.persistence.category;
 
+import com.suusarent.suusarentback.persistence.sizetype.SizeType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,6 +19,11 @@ public class Category {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "size_type_id", nullable = false)
+    private SizeType sizeType;
+
     @Size(max = 255)
     @NotNull
     @Column(name = "name", nullable = false)
@@ -26,10 +32,5 @@ public class Category {
     @NotNull
     @Column(name = "price", nullable = false, precision = 5, scale = 2)
     private BigDecimal price;
-
-    @Size(max = 10)
-    @NotNull
-    @Column(name = "size_type", nullable = false, length = 10)
-    private String sizeType;
 
 }

@@ -7,10 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.time.Instant;
 
 /**
- * DTO for {@link com.suusarent.suusarentback.presistence.user.User}
+ * DTO for {@link com.suusarent.suusarentback.persistence.user.User}
  */
 @Data
 @AllArgsConstructor

@@ -5,24 +5,24 @@
 -- Table: category
 CREATE TABLE category
 (
-    id        serial        NOT NULL,
-    name      varchar(255)  NOT NULL,
-    price     decimal(5, 2) NOT NULL,
-    size_type varchar(10)    NOT NULL,
+    id           serial        NOT NULL,
+    size_type_id int           NOT NULL,
+    name         varchar(255)  NOT NULL,
+    price        decimal(5, 2) NOT NULL,
     CONSTRAINT category_pk PRIMARY KEY (id)
 );
 
 -- Table: item
 CREATE TABLE item
 (
-    id           serial       NOT NULL,
-    category_id  int          NOT NULL,
-    status       varchar(3)   NOT NULL,
-    notes        varchar(500) NULL,
-    size_id      int          NOT NULL,
-    created_at   timestamp    NOT NULL,
-    updated_at   timestamp    NOT NULL,
-    is_available boolean      NOT NULL,
+    id                serial       NOT NULL,
+    category_id       int          NOT NULL,
+    status            varchar(3)   NOT NULL,
+    notes             varchar(500) NULL,
+    equipment_size_id int          NOT NULL,
+    created_at        timestamp    NOT NULL,
+    updated_at        timestamp    NOT NULL,
+    is_available      boolean      NOT NULL,
     CONSTRAINT item_pk PRIMARY KEY (id)
 );
 
@@ -80,13 +80,21 @@ CREATE TABLE role
     CONSTRAINT role_pk PRIMARY KEY (id)
 );
 
--- Table: size
-CREATE TABLE size
+-- Table: equipmentSize
+CREATE TABLE size_type
 (
-    id        serial      NOT NULL,
-    name      varchar(16) NOT NULL,
-    size_type varchar(10) NOT NULL,
-    sequence  int         NOT NULL,
+    id   serial      NOT NULL,
+    name varchar(16) NOT NULL,
+    CONSTRAINT size_type_pk PRIMARY KEY (id)
+);
+
+-- Table: equipmentSize
+CREATE TABLE equipment_size
+(
+    id           serial      NOT NULL,
+    size_type_id int         NOT NULL,
+    name         varchar(16) NOT NULL,
+    sequence     int         NOT NULL,
     CONSTRAINT size_pk PRIMARY KEY (id)
 );
 
@@ -115,6 +123,16 @@ ALTER TABLE item
                 INITIALLY IMMEDIATE
 ;
 
+-- foreign keys
+-- Reference: item_category (table: item)
+ALTER TABLE category
+    ADD CONSTRAINT category_size_type
+        FOREIGN KEY (size_type_id)
+            REFERENCES size_type (id)
+            NOT DEFERRABLE
+                INITIALLY IMMEDIATE
+;
+
 -- Reference: item_image_item (table: item_image)
 ALTER TABLE item_image
     ADD CONSTRAINT item_image_item
@@ -126,9 +144,9 @@ ALTER TABLE item_image
 
 -- Reference: item_size (table: item)
 ALTER TABLE item
-    ADD CONSTRAINT item_size
-        FOREIGN KEY (size_id)
-            REFERENCES size (id)
+    ADD CONSTRAINT item_equipment_size
+        FOREIGN KEY (equipment_size_id)
+            REFERENCES equipment_size (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;
@@ -174,6 +192,14 @@ ALTER TABLE "user"
     ADD CONSTRAINT user_role
         FOREIGN KEY (role_id)
             REFERENCES role (id)
+            NOT DEFERRABLE
+                INITIALLY IMMEDIATE
+;
+-- Reference: user_role (table: user)
+ALTER TABLE equipment_size
+    ADD CONSTRAINT equipment_size_size_type
+        FOREIGN KEY (size_type_id)
+            REFERENCES size_type (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;

@@ -1,4 +1,4 @@
-package com.suusarent.suusarentback.presistence.user;
+package com.suusarent.suusarentback.persistence.user;
 
 import com.suusarent.suusarentback.Status;
 import com.suusarent.suusarentback.controller.login.dto.LoginResponse;

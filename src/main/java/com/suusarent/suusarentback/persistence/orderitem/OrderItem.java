@@ -1,7 +1,7 @@
-package com.suusarent.suusarentback.presistence.orderitem;
+package com.suusarent.suusarentback.persistence.orderitem;
 
-import com.suusarent.suusarentback.presistence.item.Item;
-import com.suusarent.suusarentback.presistence.order.Order;
+import com.suusarent.suusarentback.persistence.item.Item;
+import com.suusarent.suusarentback.persistence.order.Order;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

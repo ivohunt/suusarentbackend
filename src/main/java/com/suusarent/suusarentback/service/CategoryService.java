@@ -2,16 +2,14 @@ package com.suusarent.suusarentback.service;
 
 import com.suusarent.suusarentback.Error;
 import com.suusarent.suusarentback.controller.category.dto.CategoryDto;
-import com.suusarent.suusarentback.controller.category.dto.CategoryInfos;
-import com.suusarent.suusarentback.controller.user.dto.SizeTypeInfo;
+import com.suusarent.suusarentback.controller.category.dto.CategoryInfo;
 import com.suusarent.suusarentback.infrastructure.exception.ForbiddenException;
 import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundException;
-import com.suusarent.suusarentback.presistence.category.Category;
-import com.suusarent.suusarentback.presistence.category.CategoryMapper;
-import com.suusarent.suusarentback.presistence.category.CategoryRepository;
-import com.suusarent.suusarentback.presistence.size.Size;
-import com.suusarent.suusarentback.presistence.size.SizeMapper;
-import com.suusarent.suusarentback.presistence.size.SizeRepository;
+import com.suusarent.suusarentback.persistence.category.Category;
+import com.suusarent.suusarentback.persistence.category.CategoryMapper;
+import com.suusarent.suusarentback.persistence.category.CategoryRepository;
+import com.suusarent.suusarentback.persistence.sizetype.SizeType;
+import com.suusarent.suusarentback.persistence.sizetype.SizeTypeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,25 +23,10 @@ public class CategoryService {
     private static final String REQUEST_PARAM_CATEGORY_ID = "categoryId";
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
-    private final SizeRepository sizeRepository;
-    private final SizeMapper sizeMapper;
+    private final SizeService sizeService;
+    private final SizeTypeRepository sizeTypeRepository;
 
-    public void addCategory(CategoryDto categoryDto) {
-        if (categoryRepository.existsByName(categoryDto.getName())) {
-            throw new ForbiddenException(Error.CATEGORY_ALREADY_EXISTS.getMessage(), Error.CATEGORY_ALREADY_EXISTS.getErrorCode());
-        }
-        Category category = categoryMapper.toCategoryDto(categoryDto);
-
-        categoryRepository.save(category);
-
-    }
-
-    public List<SizeTypeInfo> findSizeTypes() {
-        List<Size> sizes = sizeRepository.findAll();
-        return sizeMapper.toSizeTypeInfos(sizes);
-    }
-
-    public List<CategoryInfos> getCategories() {
+    public List<CategoryInfo> getCategories() {
         List<Category> categories = categoryRepository.findAll();
         return categoryMapper.toCategoryInfos(categories);
     }
@@ -54,4 +37,35 @@ public class CategoryService {
         categoryRepository.delete(category);
         categoryRepository.save(category);
     }
+
+    public void addCategory(CategoryDto categoryDto) {
+        validateCategoryNameIsAvailable(categoryDto);
+        createAndSaveCategory(categoryDto);
+    }
+
+    private void validateCategoryNameIsAvailable(CategoryDto categoryDto) {
+        if (categoryRepository.categoryExistsBy(categoryDto.getCategoryName())) {
+            throw new ForbiddenException(Error.CATEGORY_ALREADY_EXISTS.getMessage(), Error.CATEGORY_ALREADY_EXISTS.getErrorCode());
+        }
+    }
+
+    private void createAndSaveCategory(CategoryDto categoryDto) {
+        Category category = createCategory(categoryDto);
+        categoryRepository.save(category);
+    }
+
+    private Category createCategory(CategoryDto categoryDto) {
+        SizeType sizeType = getValidSizeType(categoryDto.getSizeTypeId());
+        Category category = categoryMapper.toCategoryDto(categoryDto);
+        category.setSizeType(sizeType);
+        return category;
+    }
+
+    private SizeType getValidSizeType(Integer sizeTypeId) {
+        SizeType sizeType = sizeTypeRepository.findById(sizeTypeId)
+                .orElseThrow(() -> new PrimaryKeyNotFoundException("sizeTypeId", sizeTypeId));
+        return sizeType;
+    }
+
+
 }

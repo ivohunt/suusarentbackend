@@ -1,6 +1,6 @@
-package com.suusarent.suusarentback.presistence.profile;
+package com.suusarent.suusarentback.persistence.profile;
 
-import com.suusarent.suusarentback.presistence.user.User;
+import com.suusarent.suusarentback.persistence.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

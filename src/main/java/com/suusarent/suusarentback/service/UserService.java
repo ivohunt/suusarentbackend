@@ -4,11 +4,11 @@ package com.suusarent.suusarentback.service;
 import com.suusarent.suusarentback.Error;
 import com.suusarent.suusarentback.controller.user.dto.UserDto;
 import com.suusarent.suusarentback.infrastructure.exception.ForbiddenException;
-import com.suusarent.suusarentback.presistence.role.Role;
-import com.suusarent.suusarentback.presistence.role.RoleRepository;
-import com.suusarent.suusarentback.presistence.user.User;
-import com.suusarent.suusarentback.presistence.user.UserMapper;
-import com.suusarent.suusarentback.presistence.user.UserRepository;
+import com.suusarent.suusarentback.persistence.role.Role;
+import com.suusarent.suusarentback.persistence.role.RoleRepository;
+import com.suusarent.suusarentback.persistence.user.User;
+import com.suusarent.suusarentback.persistence.user.UserMapper;
+import com.suusarent.suusarentback.persistence.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

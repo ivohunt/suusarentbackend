@@ -3,9 +3,9 @@ package com.suusarent.suusarentback.service;
 import com.suusarent.suusarentback.Status;
 import com.suusarent.suusarentback.controller.login.dto.LoginResponse;
 import com.suusarent.suusarentback.infrastructure.exception.ForbiddenException;
-import com.suusarent.suusarentback.presistence.user.User;
-import com.suusarent.suusarentback.presistence.user.UserMapper;
-import com.suusarent.suusarentback.presistence.user.UserRepository;
+import com.suusarent.suusarentback.persistence.user.User;
+import com.suusarent.suusarentback.persistence.user.UserMapper;
+import com.suusarent.suusarentback.persistence.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
