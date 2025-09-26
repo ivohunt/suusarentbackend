@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class ItemAddController {
 
     private final ItemAddService itemAddService;
 
+    @Transactional
     @PostMapping("/item-add")
     @Operation(summary = "Uue varustusühiku lisamine.")
     @ApiResponses(value = {
@@ -29,4 +31,6 @@ public class ItemAddController {
         itemAddService.itemAdd(itemAddDto);
 
     }
+
+    private void
 }
