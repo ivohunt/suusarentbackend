@@ -1,17 +1,17 @@
 package com.suusarent.suusarentback.persistence.item;
 
-import com.suusarent.suusarentback.controller.item.dto.ItemAddDto;
+import com.suusarent.suusarentback.controller.item.dto.ItemDto;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
-public interface ItemAddMapper {
-    @Mapping(source = "equipmentSizeId", target = "equipmentSize.id")
+public interface ItemMapper {
+
     @Mapping(source = "categoryId", target = "category.id")
     @Mapping(source = "notes", target = "notes")
-    Item toItem(ItemAddDto itemAddDto);
+    Item toItem(ItemDto itemDto);
 
 
     // lugemisel
 //    @InheritInverseConfiguration(name = "toEntity")
-//    ItemAddDto toDto(Item item);
+//    ItemDto toDto(Item item);
 }

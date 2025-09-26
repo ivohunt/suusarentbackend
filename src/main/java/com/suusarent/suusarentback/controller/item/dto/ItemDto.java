@@ -13,9 +13,10 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemAddDto implements Serializable {
+public class ItemDto implements Serializable {
     private Integer categoryId;
     @Size(max = 500)
     private String notes;
     private Integer equipmentSizeId;
+    private String itemImageData;
 }
