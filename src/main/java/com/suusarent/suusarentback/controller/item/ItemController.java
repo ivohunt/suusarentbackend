@@ -3,6 +3,7 @@ package com.suusarent.suusarentback.controller.item;
 import com.suusarent.suusarentback.controller.category.dto.CategoryInfo;
 import com.suusarent.suusarentback.controller.item.dto.ItemDto;
 import com.suusarent.suusarentback.infrastructure.error.ApiError;
+import com.suusarent.suusarentback.persistence.category.CategoryEquipmentSizeDto;
 import com.suusarent.suusarentback.service.CategoryService;
 import com.suusarent.suusarentback.service.ItemService;
 import io.swagger.v3.oas.annotations.Operation;
