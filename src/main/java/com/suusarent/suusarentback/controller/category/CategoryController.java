@@ -29,7 +29,7 @@ public class CategoryController {
             @ApiResponse(responseCode = "403", description = "Selline kategooria on juba süsteemis olemas",
                     content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public void addCategory(@RequestBody @Valid CategoryDto categoryDto) {
-        categoryService.addCategory(categoryDto);
+                categoryService.addCategory(categoryDto);
     }
 
 
