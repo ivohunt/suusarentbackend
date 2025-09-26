@@ -36,14 +36,16 @@ public class ItemController {
 
     }
 
-    @GetMapping("/item-add-categories")
+    @GetMapping("/item-add-get-categories")
     @Operation(summary = "Leiab andmebaasist kõik kategooriad ja tagastab tabelisse id, name ja price")
     public List<CategoryInfo> getCategories() {
         return categoryService.getCategories();
     }
 
-    @GetMapping("item-add-cat-size")
+    @GetMapping("/item-add-get-category-sizes")
+    @Operation(summary = "Leiab andmebaasist valitud kategooria equipmentSizeName (suurusühiku) järgi")
     public void getCategorySize() {
+        categoryService.getCategorySize();
 
     }
 }

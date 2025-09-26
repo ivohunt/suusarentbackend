@@ -67,5 +67,8 @@ public class CategoryService {
         return sizeType;
     }
 
+    public void getCategorySize() {
+        categoryRepository.findAll();
+    }
 
 }
