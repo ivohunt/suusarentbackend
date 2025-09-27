@@ -14,7 +14,7 @@ public class OrderService {
 
     public void addDatesAndCreateOrder(OrderDatesInfo orderDatesInfo) {
 
-        Order order = orderMapper.toOrderDates(OrderDatesInfo orderDatesInfo);
+        Order order = orderMapper.toOrderDates(orderDatesInfo);
 
 
     }
