@@ -25,25 +25,30 @@ public class OrderService {
     public void addDatesAndCreateOrder(OrderDatesInfo orderDatesInfo, Integer userId) {
 
         Order order = orderMapper.toOrderDates(orderDatesInfo);
+        setAndSaveOrderInitialValues(userId, order);
+        generateAndSetOrderNumber(order);
+        orderRepository.save(order);
+    }
 
+    private void generateAndSetOrderNumber(Order order) {
+        Integer orderId = order.getId();
+        order.setOrderNumber(generateOrderNumber(orderId));
+    }
+
+    private void setAndSaveOrderInitialValues(Integer userId, Order order) {
         order.setCreatedAt(Instant.now());
         order.setUpdatedAt(Instant.now());
         order.setStatus(Status.UNCONFIRMED.getCode());
         order.setOrderNumber("TBC");
-
-
-        User user = userRepository.findUserById(userId);
-        order.setUser(user);
-
         BigDecimal totalPrice = BigDecimal.valueOf(000.00);
         order.setTotalPrice(totalPrice);
+        findAndSetUser(userId, order);
         orderRepository.save(order);
+    }
 
-        Integer orderId = order.getId();
-        order.setOrderNumber(generateOrderNumber(orderId));
-        orderRepository.save(order);
-
-
+    private void findAndSetUser(Integer userId, Order order) {
+        User user = userRepository.findUserById(userId);
+        order.setUser(user);
     }
 
     private String generateOrderNumber(Integer orderId) {
@@ -55,9 +60,7 @@ public class OrderService {
         if (paddingLength < 0) {
             return prefix + idPart;
         }
-
         String padding = "0".repeat(paddingLength);
         return prefix + padding + idPart;
-
     }
 }
