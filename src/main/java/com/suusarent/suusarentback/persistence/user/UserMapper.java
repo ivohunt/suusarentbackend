@@ -25,7 +25,7 @@ public interface UserMapper {
     @Mapping(source = "email", target = "email")
     @Mapping(source = "telephone", target = "phone")
     @Mapping(source = "password", target = "password")
-    @Mapping(expression = "java(Status.ACTIVE.getCode())", target = "status")
+    @Mapping(expression = "java(Status.ACTIVE_USER.getCode())", target = "status")
     @Mapping(expression = "java(Instant.now())", target = "createdAt")
     User toUser(UserDto userDto);
 

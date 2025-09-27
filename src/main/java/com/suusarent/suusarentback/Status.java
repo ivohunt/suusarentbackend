@@ -4,8 +4,13 @@ import lombok.Getter;
 
 @Getter
 public enum Status {
-    ACTIVE("A"),
-    DELETED("D");
+    ACTIVE_USER("A"),
+    DELETED("D"),
+    UNCONFIRMED("UNC"),
+    CONFIRMED("CON"),
+    ACTIVE_RENTAL("ACT"),
+    FINISHED("FIN"),
+    ;
 
     private final String code;
 

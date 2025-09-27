@@ -1,6 +1,6 @@
-package com.suusarent.suusarentback.controller.order.dto;
+package com.suusarent.suusarentback.persistence.order;
 
-import com.suusarent.suusarentback.persistence.order.Order;
+import com.suusarent.suusarentback.controller.order.dto.OrderDatesInfo;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)

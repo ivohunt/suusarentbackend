@@ -25,7 +25,7 @@ public class LoginService {
     }
 
     private User getValidUser(String email, String password) {
-        return userRepository.findUserBy(email, password, Status.ACTIVE.getCode())
+        return userRepository.findUserBy(email, password, Status.ACTIVE_USER.getCode())
                 .orElseThrow(() -> new ForbiddenException(INCORRECT_CREDENTIALS.getMessage(), INCORRECT_CREDENTIALS.getErrorCode()));
     }
 }

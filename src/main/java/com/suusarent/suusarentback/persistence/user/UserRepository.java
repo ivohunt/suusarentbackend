@@ -2,6 +2,7 @@ package com.suusarent.suusarentback.persistence.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -14,6 +15,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("select (count(u) > 0) from User u where upper(u.email) = upper(:email)")
     boolean userExistsBy(String email);
+
+    @Query("select u from User u where u.id = :userId")
+    User findUserById(Integer userId);
 
 
 }
