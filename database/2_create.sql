@@ -17,7 +17,7 @@ CREATE TABLE item
 (
     id                serial       NOT NULL,
     category_id       int          NOT NULL,
-    status            varchar(3)   NOT NULL,
+    status            varchar(10)   NOT NULL,
     notes             varchar(500) NULL,
     equipment_size_id int          NOT NULL,
     created_at        timestamp    NOT NULL,

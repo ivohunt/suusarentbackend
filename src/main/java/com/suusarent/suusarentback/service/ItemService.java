@@ -1,8 +1,11 @@
 package com.suusarent.suusarentback.service;
 
-import com.suusarent.suusarentback.Status;
 import com.suusarent.suusarentback.controller.item.dto.ItemDto;
+import com.suusarent.suusarentback.infrastructure.exception.ForbiddenException;
 import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundException;
+import com.suusarent.suusarentback.persistence.category.Category;
+import com.suusarent.suusarentback.persistence.category.CategoryMapper;
+import com.suusarent.suusarentback.persistence.category.CategoryRepository;
 import com.suusarent.suusarentback.persistence.equipmentsize.EquipmentSize;
 import com.suusarent.suusarentback.persistence.equipmentsize.EquipmentSizeRepository;
 import com.suusarent.suusarentback.persistence.item.Item;
@@ -14,8 +17,6 @@ import com.suusarent.suusarentback.util.BytesConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-
 @Service
 @RequiredArgsConstructor
 public class ItemService {
@@ -24,12 +25,13 @@ public class ItemService {
     private final ItemImageRepository itemImageRepository;
     private final ItemRepository itemRepository;
     private final EquipmentSizeRepository equipmentSizeRepository;
+    private final CategoryMapper categoryMapper;
+    private final CategoryRepository categoryRepository;
 
     public void addItem(ItemDto itemDto) {
 
         Item item = createAndSaveItem(itemDto);
         handleItemImage(itemDto, item);
-
     }
 
     private Item createAndSaveItem(ItemDto itemDto) {
@@ -40,15 +42,16 @@ public class ItemService {
     }
 
     private Item createItem(ItemDto itemDto) {
+
+        Category category = getValidCategory(itemDto.getCategoryId());
+        EquipmentSize equipmentSize = getValidEquipmentSize(itemDto.getEquipmentSizeId());
+
         Item item = itemMapper.toItem(itemDto);
-        item.setStatus(Status.ACTIVE.getCode());
-        item.setCreatedAt(Instant.now());
-        item.setUpdatedAt(Instant.now());
-        item.setIsAvailable(true);
-        EquipmentSize equipmentSize = getValidItemSize(itemDto.getEquipmentSizeId());
+        item.setCategory(category);
         item.setEquipmentSize(equipmentSize);
         return item;
     }
+
 
     private void handleItemImage(ItemDto itemDto, Item item) {
         // IMAGE
@@ -58,10 +61,15 @@ public class ItemService {
         itemImageRepository.save(itemImage);
     }
 
-    private EquipmentSize getValidItemSize(Integer equipmentSizeId) {
-        EquipmentSize equipmentSize = equipmentSizeRepository.findById(equipmentSizeId)
+
+    private Category getValidCategory(Integer categoryId) {
+        return categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new PrimaryKeyNotFoundException("categoryId", categoryId));
+    }
+
+    private EquipmentSize getValidEquipmentSize(Integer equipmentSizeId) {
+        return equipmentSizeRepository.findById(equipmentSizeId)
                 .orElseThrow(() -> new PrimaryKeyNotFoundException("equipmentSizeId", equipmentSizeId));
-        return equipmentSize;
     }
 }
 

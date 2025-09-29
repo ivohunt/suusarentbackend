@@ -2,6 +2,7 @@ package com.suusarent.suusarentback.persistence.category;
 
 import com.suusarent.suusarentback.controller.category.dto.CategoryDto;
 import com.suusarent.suusarentback.controller.category.dto.CategoryInfo;
+import com.suusarent.suusarentback.controller.category.dto.ItemCategoryDropdown;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -20,8 +21,14 @@ public interface CategoryMapper {
     @Mapping(source = "id", target = "categoryId")
     @Mapping(source = "name", target = "categoryName")
     @Mapping(source = "price", target = "price")
+    @Mapping(source = "sizeType.id", target = "sizeTypeId")
     CategoryInfo toCategoryInfo(Category category);
 
     List<CategoryInfo> toCategoryInfos(List<Category> categories);
+
+    @Mapping(target="name", source = "name")
+    ItemCategoryDropdown toItemCategoryDropdown(Category category);
+
+    List<ItemCategoryDropdown> toItemCategoryDropDownList(List<Category> categories);
 
 }

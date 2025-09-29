@@ -3,12 +3,14 @@ package com.suusarent.suusarentback.service;
 import com.suusarent.suusarentback.Error;
 import com.suusarent.suusarentback.controller.category.dto.CategoryDto;
 import com.suusarent.suusarentback.controller.category.dto.CategoryInfo;
+import com.suusarent.suusarentback.controller.category.dto.ItemCategoryDropdown;
 import com.suusarent.suusarentback.infrastructure.exception.ForbiddenException;
 import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundException;
 import com.suusarent.suusarentback.persistence.category.Category;
-import com.suusarent.suusarentback.persistence.category.CategoryEquipmentSizeDto;
 import com.suusarent.suusarentback.persistence.category.CategoryMapper;
 import com.suusarent.suusarentback.persistence.category.CategoryRepository;
+import com.suusarent.suusarentback.persistence.equipmentsize.EquipmentSize;
+import com.suusarent.suusarentback.persistence.equipmentsize.EquipmentSizeRepository;
 import com.suusarent.suusarentback.persistence.sizetype.SizeType;
 import com.suusarent.suusarentback.persistence.sizetype.SizeTypeRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,10 +28,17 @@ public class CategoryService {
     private final CategoryMapper categoryMapper;
     private final SizeService sizeService;
     private final SizeTypeRepository sizeTypeRepository;
+    private final EquipmentSizeRepository equipmentSizeRepository;
 
     public List<CategoryInfo> getCategories() {
         List<Category> categories = categoryRepository.findAll();
         return categoryMapper.toCategoryInfos(categories);
+    }
+
+
+    public List<ItemCategoryDropdown> getItemCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        return categoryMapper.toItemCategoryDropDownList(categories);
     }
 
     public void deleteCategory(Integer categoryId) {
@@ -67,9 +76,6 @@ public class CategoryService {
         return sizeType;
     }
 
-    public void getCategorySize(CategoryEquipmentSizeDto categoryEquipmentSizeDto) {
-        categoryEquipmentSizeDto.getId();
 
-    }
 
 }

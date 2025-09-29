@@ -25,9 +25,9 @@ public class Item {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @Size(max = 3)
+    @Size(max = 10)
     @NotNull
-    @Column(name = "status", nullable = false, length = 3)
+    @Column(name = "status", nullable = false, length = 10)
     private String status;
 
     @Size(max = 500)
