@@ -45,7 +45,7 @@ public class ItemService {
         item.setCreatedAt(Instant.now());
         item.setUpdatedAt(Instant.now());
         item.setIsAvailable(true);
-        EquipmentSize equipmentSize = getValidIemSize(itemDto.getEquipmentSizeId());
+        EquipmentSize equipmentSize = getValidItemSize(itemDto.getEquipmentSizeId());
         item.setEquipmentSize(equipmentSize);
         return item;
     }
@@ -58,7 +58,7 @@ public class ItemService {
         itemImageRepository.save(itemImage);
     }
 
-    private EquipmentSize getValidIemSize(Integer equipmentSizeId) {
+    private EquipmentSize getValidItemSize(Integer equipmentSizeId) {
         EquipmentSize equipmentSize = equipmentSizeRepository.findById(equipmentSizeId)
                 .orElseThrow(() -> new PrimaryKeyNotFoundException("equipmentSizeId", equipmentSizeId));
         return equipmentSize;
