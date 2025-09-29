@@ -33,8 +33,7 @@ public class OrderService {
 
     public List<OrderDto> findOrders(Integer userId) {
         List<Order> orders = orderRepository.findByUserId(userId);
-        List<OrderDto> orderInfos = orderMapper.toOrderInfos(orders);
-        return orderInfos;
+        return orderMapper.toOrderInfos(orders);
     }
 
     private void generateAndSetOrderNumber(Order order) {

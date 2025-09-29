@@ -18,6 +18,10 @@ public interface OrderMapper {
     Order toOrderDates(OrderDatesInfo orderDatesInfo);
 
     @Mapping(source = "id", target = "orderId")
+    @Mapping(source = "orderNumber", target = "orderNumber")
+    @Mapping(source = "start", target = "start")
+    @Mapping(source = "end", target = "end")
+    @Mapping(source = "status", target = "status")
     OrderDto toDto(Order order);
 
     List<OrderDto> toOrderInfos(List<Order> orders);
