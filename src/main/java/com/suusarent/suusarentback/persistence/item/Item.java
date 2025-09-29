@@ -36,7 +36,7 @@ public class Item {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "size_id", nullable = false)
+    @JoinColumn(name = "equipment_size_id", nullable = false)
     private EquipmentSize equipmentSize;
 
     @NotNull
