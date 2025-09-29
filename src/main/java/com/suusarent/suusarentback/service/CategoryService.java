@@ -6,6 +6,7 @@ import com.suusarent.suusarentback.controller.category.dto.CategoryInfo;
 import com.suusarent.suusarentback.infrastructure.exception.ForbiddenException;
 import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundException;
 import com.suusarent.suusarentback.persistence.category.Category;
+import com.suusarent.suusarentback.persistence.category.CategoryEquipmentSizeDto;
 import com.suusarent.suusarentback.persistence.category.CategoryMapper;
 import com.suusarent.suusarentback.persistence.category.CategoryRepository;
 import com.suusarent.suusarentback.persistence.sizetype.SizeType;
@@ -66,5 +67,9 @@ public class CategoryService {
         return sizeType;
     }
 
+    public void getCategorySize(CategoryEquipmentSizeDto categoryEquipmentSizeDto) {
+        categoryEquipmentSizeDto.getId();
+
+    }
 
 }
