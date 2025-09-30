@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
@@ -23,6 +24,8 @@ public class OrderDto implements Serializable {
     private LocalDate start;
     @NotNull
     private LocalDate end;
+    @NotNull
+    private BigDecimal totalPrice;
     @NotNull
     private String status;
 }

@@ -36,6 +36,7 @@ public class OrderService {
         return orderMapper.toOrderInfos(orders);
     }
 
+
     private void generateAndSetOrderNumber(Order order) {
         Integer orderId = order.getId();
         order.setOrderNumber(generateOrderNumber(orderId));
@@ -69,6 +70,5 @@ public class OrderService {
         String padding = "0".repeat(paddingLength);
         return prefix + padding + idPart;
     }
-
 
 }

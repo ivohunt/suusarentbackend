@@ -21,6 +21,7 @@ public interface OrderMapper {
     @Mapping(source = "orderNumber", target = "orderNumber")
     @Mapping(source = "start", target = "start")
     @Mapping(source = "end", target = "end")
+    @Mapping(source = "totalPrice", target = "totalPrice")
     @Mapping(source = "status", target = "status")
     OrderDto toDto(Order order);
 
