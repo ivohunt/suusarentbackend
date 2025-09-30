@@ -17,7 +17,7 @@ public class EquipmentSizeController {
     private final EquipmentSizeService equipmentSizeService;
 
 
-    @GetMapping("/equipment-sizes/")
+    @GetMapping("/equipment-sizes")
     @Operation(summary = "Tagastab andmebaasist suurused võttes aluseks sizeTypeId")
     public List<EquipmentSizeInfo> getEquipmentSizes(@RequestParam Integer sizeTypeId) {
         return equipmentSizeService.getEquipmentSizes(sizeTypeId);

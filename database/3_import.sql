@@ -49,7 +49,8 @@ INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (
 INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (default,'XL',4,400);
 INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (default,'XXL',4,500);
 
-
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000023','21/09/2025','25/09/2025','UNC',120,2,now(),now())
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000045','23/09/2025','27/09/2025','CON',120,2,now(),now())
 
 
 

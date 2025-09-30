@@ -6,8 +6,8 @@ import lombok.Getter;
 public enum Status {
     ACTIVE_USER("A"),
     DELETED_USER("D"),
-    UNCONFIRMED("UNC"),
-    CONFIRMED("CON"),
+    UNCONFIRMED_RENTAL("UNC_RENT"),
+    CONFIRMED_RENTAL("CONF_RENT"),
     ACTIVE_RENTAL("ACT_RENT"),
     FINISHED("FIN_RENT"),
     ACTIVE_ITEM("ACT_ITEM"),
