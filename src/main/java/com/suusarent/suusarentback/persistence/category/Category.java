@@ -36,7 +36,7 @@ public class Category {
     @Column(name = "price", nullable = false, precision = 5, scale = 2)
     private BigDecimal price;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Item> items = new ArrayList<>();
 
 }
