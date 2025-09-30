@@ -3,6 +3,7 @@ package com.suusarent.suusarentback.service;
 import com.suusarent.suusarentback.Status;
 import com.suusarent.suusarentback.controller.order.dto.OrderDatesInfo;
 import com.suusarent.suusarentback.controller.order.dto.OrderDto;
+import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundException;
 import com.suusarent.suusarentback.persistence.order.Order;
 import com.suusarent.suusarentback.persistence.order.OrderMapper;
 import com.suusarent.suusarentback.persistence.order.OrderRepository;
@@ -19,6 +20,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderService {
 
+
+    private static final String REQUEST_PARAM_NAME_ORDER_ID = "orderId";
     private final OrderMapper orderMapper;
 
     private final UserRepository userRepository;
@@ -71,4 +74,11 @@ public class OrderService {
         return prefix + padding + idPart;
     }
 
+    public OrderDto findOrder(Integer orderId) {
+        Order order = orderRepository.findById(orderId)
+        .orElseThrow(() -> new PrimaryKeyNotFoundException(REQUEST_PARAM_NAME_ORDER_ID, orderId));
+
+    return orderMapper.toDto(order);
+    }
 }
+
