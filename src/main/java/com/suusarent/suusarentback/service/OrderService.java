@@ -44,7 +44,7 @@ public class OrderService {
     private void setAndSaveOrderInitialValues(Integer userId, Order order) {
         order.setCreatedAt(Instant.now());
         order.setUpdatedAt(Instant.now());
-        order.setStatus(Status.UNCONFIRMED.getCode());
+        order.setStatus(Status.UNCONFIRMED_RENTAL.getCode());
         order.setOrderNumber("TBC");
         BigDecimal totalPrice = BigDecimal.valueOf(000.00);
         order.setTotalPrice(totalPrice);
