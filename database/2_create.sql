@@ -42,7 +42,7 @@ CREATE TABLE "order"
     order_number varchar(10)   NULL,
     start        date          NULL,
     "end"        date          NULL,
-    status       varchar(3)    NOT NULL,
+    status       varchar(10)    NOT NULL,
     total_price  decimal(7, 2) NOT NULL,
     user_id      int           NOT NULL,
     created_at   timestamp     NOT NULL,
