@@ -18,7 +18,7 @@ public class EquipmentSizeController {
 
 
     @GetMapping("/equipment-sizes/")
-    @Operation(summary = "Leiab andmebaasist...")
+    @Operation(summary = "Tagastab andmebaasist suurused võttes aluseks sizeTypeId")
     public List<EquipmentSizeInfo> getEquipmentSizes(@RequestParam Integer sizeTypeId) {
         return equipmentSizeService.getEquipmentSizes(sizeTypeId);
     }
