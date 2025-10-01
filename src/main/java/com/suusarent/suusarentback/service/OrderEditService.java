@@ -17,17 +17,9 @@ public class OrderEditService {
     private final OrderEditRepository orderEditRepository;
     private final OrderRepository orderRepository;
 
-    @Transactional
-    public void addOrder(OrderDto orderDto) {
-        Order order = createAndSaveOrder(orderDto);
-        handleAddCustomerInfo(orderDto.getOrderInfo(), order);
-    }
 
-    private Order createAndSaveOrder(OrderDto orderDto) {
-        Order order = createOrder(orderDto);
-        orderRepository.save(order);
-        return order;
-    }
+
+
 
 
 }

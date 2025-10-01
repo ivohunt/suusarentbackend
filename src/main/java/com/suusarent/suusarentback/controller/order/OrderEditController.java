@@ -21,6 +21,7 @@ public class OrderEditController {
     @GetMapping("/order")
     @Operation (summary= "Leiab orderId järgi tellimuse, millega edasi tegeleda")
     public OrderDto findOrder(@RequestParam Integer orderId){
-        return orderService.findOrder(orderId);
+        return null;
     }
+
 }

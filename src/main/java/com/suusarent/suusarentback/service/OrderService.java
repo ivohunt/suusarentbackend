@@ -7,6 +7,8 @@ import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundEx
 import com.suusarent.suusarentback.persistence.order.Order;
 import com.suusarent.suusarentback.persistence.order.OrderMapper;
 import com.suusarent.suusarentback.persistence.order.OrderRepository;
+import com.suusarent.suusarentback.persistence.orderitem.OrderItem;
+import com.suusarent.suusarentback.persistence.orderitem.OrderItemRepository;
 import com.suusarent.suusarentback.persistence.user.User;
 import com.suusarent.suusarentback.persistence.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +29,7 @@ public class OrderService {
 
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
 
     public void addDatesAndCreateOrder(OrderDatesInfo orderDatesInfo, Integer userId) {
         Order order = orderMapper.toOrderDates(orderDatesInfo);
@@ -74,11 +78,10 @@ public class OrderService {
         return prefix + padding + idPart;
     }
 
-    public OrderDto findOrder(Integer orderId) {
-        Order order = orderRepository.findById(orderId)
-        .orElseThrow(() -> new PrimaryKeyNotFoundException(REQUEST_PARAM_NAME_ORDER_ID, orderId));
 
-    return orderMapper.toDto(order);
-    }
 }
+
+
+
+
 

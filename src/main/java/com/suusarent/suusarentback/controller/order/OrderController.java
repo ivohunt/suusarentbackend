@@ -18,7 +18,6 @@ public class OrderController {
 
     @PostMapping("/order")
     @Operation(description = "Laenutuse kuupäevade lisamine ja order entity loomine")
-
     public void addDatesAndCreateOrder(@RequestBody @Valid OrderDatesInfo orderDatesInfo, @RequestParam Integer userId) {
         orderService.addDatesAndCreateOrder(orderDatesInfo, userId);
     }
@@ -28,6 +27,5 @@ public class OrderController {
     public List<OrderDto> findOrders(@RequestParam Integer userId) {
         return orderService.findOrders(userId);
     }
-
 
 }
