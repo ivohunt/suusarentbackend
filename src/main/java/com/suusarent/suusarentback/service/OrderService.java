@@ -39,7 +39,7 @@ public class OrderService {
     private final OrderItemRepository orderItemRepository;
     private final OrderItemMapper orderItemMapper;
 
-    public OrderResponse createOrder(OrderRequestDto dto) {
+    public Integer createOrder(OrderRequestDto dto) {
         User user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new RuntimeException("Kasutajat ei leitud ID-ga: " + dto.getUserId()));
 
@@ -65,7 +65,8 @@ public class OrderService {
         orderRepository.save(order);
         order.setOrderNumber(generateOrderNumber(order.getId()));
         orderRepository.save(order);
-        return orderMapper.toOrderResponse(order);
+
+        return order.getId();
     }
 
 

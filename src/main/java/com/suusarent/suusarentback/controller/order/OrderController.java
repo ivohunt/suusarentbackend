@@ -19,7 +19,7 @@ public class OrderController {
 
     @PostMapping("/order")
     @Operation(description = "Laenutuse kuupäevade lisamine ja order entity loomine")
-    public OrderResponse createOrder(@RequestBody @Valid OrderRequestDto orderRequestDto) {
+    public Integer createOrder(@RequestBody @Valid OrderRequestDto orderRequestDto) {
         return orderService.createOrder(orderRequestDto);
     }
 
