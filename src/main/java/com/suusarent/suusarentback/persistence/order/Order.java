@@ -31,9 +31,9 @@ public class Order {
     @Column(name = "\"end\"")
     private LocalDate end;
 
-    @Size(max = 3)
+    @Size(max = 10)
     @NotNull
-    @Column(name = "status", nullable = false, length = 3)
+    @Column(name = "status", nullable = false, length = 10)
     private String status;
 
     @NotNull

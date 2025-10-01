@@ -21,8 +21,8 @@ public class Item {
     private Integer id;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @Size(max = 10)
@@ -35,8 +35,8 @@ public class Item {
     private String notes;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "equipment_size_id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "equipment_size_id")
     private EquipmentSize equipmentSize;
 
     @NotNull

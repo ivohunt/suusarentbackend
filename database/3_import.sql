@@ -4,6 +4,7 @@ INSERT INTO suusarent."role" (id, name) VALUES (default, 'customer');
 
 INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, email, password, status, created_at) VALUES (default,1 ,'Hea','Admin','123456','admin', '123','A','NOW()');
 INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, email, password, status, created_at) VALUES (default,  2,'Veel Üks','Hea Klient','123456','customer', '123','A','NOW()');
+INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'no order', 'A', '2025-10-01 08:36:15.174480');
 
 
 INSERT INTO suusarent.size_type (id, name) VALUES (default, 'Suusa suurused');
@@ -49,8 +50,8 @@ INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (
 INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (default,'XL',4,400);
 INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (default,'XXL',4,500);
 
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000023','21/09/2025','25/09/2025','UNC',120,2,now(),now());
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000045','23/09/2025','27/09/2025','CON',120,2,now(),now())
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000023','21/09/2025','25/09/2025','UNC_RENT',120,2,now(),now());
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000045','23/09/2025','27/09/2025','CON',120,2,now(),now());
 
 
 
