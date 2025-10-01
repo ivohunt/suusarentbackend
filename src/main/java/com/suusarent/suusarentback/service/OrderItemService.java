@@ -11,8 +11,6 @@ import com.suusarent.suusarentback.persistence.orderitem.OrderItemMapper;
 import com.suusarent.suusarentback.persistence.orderitem.OrderItemRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-
 @Service
 public class OrderItemService {
     private final OrderRepository orderRepository;
@@ -33,7 +31,7 @@ public class OrderItemService {
     public OrderItemsResponse addItemToOrder(OrderItemRequestDto dto) {
         OrderItem orderItem = orderItemMapper.toOrderItem(dto);
 
-       Order order = orderRepository.findById(dto.getOrderId())
+        Order order = orderRepository.findById(dto.getOrderId())
                 .orElseThrow(() -> new RuntimeException("Order not found"));
 
         Item item = itemRepository.findById(dto.getItemId())

@@ -9,7 +9,6 @@ import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundEx
 import com.suusarent.suusarentback.persistence.category.Category;
 import com.suusarent.suusarentback.persistence.category.CategoryMapper;
 import com.suusarent.suusarentback.persistence.category.CategoryRepository;
-import com.suusarent.suusarentback.persistence.equipmentsize.EquipmentSize;
 import com.suusarent.suusarentback.persistence.equipmentsize.EquipmentSizeRepository;
 import com.suusarent.suusarentback.persistence.sizetype.SizeType;
 import com.suusarent.suusarentback.persistence.sizetype.SizeTypeRepository;
@@ -75,7 +74,6 @@ public class CategoryService {
                 .orElseThrow(() -> new PrimaryKeyNotFoundException("sizeTypeId", sizeTypeId));
         return sizeType;
     }
-
 
 
 }

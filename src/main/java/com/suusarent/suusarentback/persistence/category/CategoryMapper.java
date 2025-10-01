@@ -26,7 +26,7 @@ public interface CategoryMapper {
 
     List<CategoryInfo> toCategoryInfos(List<Category> categories);
 
-    @Mapping(target="name", source = "name")
+    @Mapping(target = "name", source = "name")
     ItemCategoryDropdown toItemCategoryDropdown(Category category);
 
     List<ItemCategoryDropdown> toItemCategoryDropDownList(List<Category> categories);

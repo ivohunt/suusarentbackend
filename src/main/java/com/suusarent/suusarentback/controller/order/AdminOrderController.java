@@ -16,8 +16,8 @@ public class AdminOrderController {
     private final AdminOrderService adminOrderService;
 
     @GetMapping("/all-orders")
-    @Operation(summary= "Leiab adminile kõik olemasolevad tellimused")
-    public List<OrderDto> getAllOrders (){
+    @Operation(summary = "Leiab adminile kõik olemasolevad tellimused")
+    public List<OrderDto> getAllOrders() {
         return adminOrderService.getAllOrders();
     }
 }

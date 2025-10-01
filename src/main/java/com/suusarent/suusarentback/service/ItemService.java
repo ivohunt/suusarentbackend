@@ -1,7 +1,6 @@
 package com.suusarent.suusarentback.service;
 
 import com.suusarent.suusarentback.controller.item.dto.ItemDto;
-import com.suusarent.suusarentback.infrastructure.exception.ForbiddenException;
 import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundException;
 import com.suusarent.suusarentback.persistence.category.Category;
 import com.suusarent.suusarentback.persistence.category.CategoryMapper;

@@ -4,7 +4,6 @@ import com.suusarent.suusarentback.controller.order.dto.OrderDto;
 import com.suusarent.suusarentback.persistence.order.Order;
 import com.suusarent.suusarentback.persistence.order.OrderMapper;
 import com.suusarent.suusarentback.persistence.order.OrderRepository;
-import com.suusarent.suusarentback.persistence.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

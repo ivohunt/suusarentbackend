@@ -3,9 +3,8 @@ package com.suusarent.suusarentback.persistence.orderitem;
 import com.suusarent.suusarentback.Status;
 import com.suusarent.suusarentback.controller.order.dto.OrderItemRequestDto;
 import com.suusarent.suusarentback.controller.order.dto.OrderItemsResponse;
-import com.suusarent.suusarentback.persistence.item.ItemRepository;
-import com.suusarent.suusarentback.persistence.order.OrderRepository;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.time.Instant;
@@ -23,7 +22,6 @@ public interface OrderItemMapper {
     @Mapping(source = "price", target = "price")
     @Mapping(expression = "java(Instant.now())", target = "timestamps")
     OrderItem toOrderItem(OrderItemRequestDto dto);
-
 
 
 }

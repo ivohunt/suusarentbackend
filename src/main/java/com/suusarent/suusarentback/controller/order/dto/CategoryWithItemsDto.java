@@ -1,7 +1,6 @@
 package com.suusarent.suusarentback.controller.order.dto;
 
 import com.suusarent.suusarentback.controller.item.dto.ItemAvailableDto;
-import com.suusarent.suusarentback.controller.item.dto.ItemDto;
 import com.suusarent.suusarentback.persistence.category.Category;
 import com.suusarent.suusarentback.persistence.item.Item;
 import lombok.AllArgsConstructor;

@@ -2,7 +2,10 @@ package com.suusarent.suusarentback.persistence.item;
 
 import com.suusarent.suusarentback.Status;
 import com.suusarent.suusarentback.controller.item.dto.ItemDto;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.ReportingPolicy;
 
 import java.time.Instant;
 
@@ -13,7 +16,6 @@ public interface ItemMapper {
 //    @Mapping(source = "categoryId", target = "category.id")
 //    @Mapping(source = "notes", target = "notes")
 //
-
 
 
     @Mapping(expression = "java(Status.ACTIVE_ITEM.getCode())", target = "status")

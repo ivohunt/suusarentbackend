@@ -7,16 +7,11 @@ import com.suusarent.suusarentback.persistence.category.Category;
 import com.suusarent.suusarentback.persistence.category.CategoryRepository;
 import com.suusarent.suusarentback.persistence.item.Item;
 import com.suusarent.suusarentback.persistence.item.ItemRepository;
-import com.suusarent.suusarentback.controller.order.dto.OrderDatesInfo;
-import com.suusarent.suusarentback.controller.order.dto.OrderDto;
-import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundException;
 import com.suusarent.suusarentback.persistence.order.Order;
 import com.suusarent.suusarentback.persistence.order.OrderMapper;
 import com.suusarent.suusarentback.persistence.order.OrderRepository;
 import com.suusarent.suusarentback.persistence.orderitem.OrderItem;
 import com.suusarent.suusarentback.persistence.orderitem.OrderItemMapper;
-import com.suusarent.suusarentback.persistence.orderitem.OrderItemRepository;
-import com.suusarent.suusarentback.persistence.orderitem.OrderItem;
 import com.suusarent.suusarentback.persistence.orderitem.OrderItemRepository;
 import com.suusarent.suusarentback.persistence.user.User;
 import com.suusarent.suusarentback.persistence.user.UserRepository;
@@ -28,7 +23,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -132,7 +126,7 @@ public class OrderService {
 
     public OrderResponse getOpenOrder(Integer userId) {
         Order order = orderRepository.findOrderBy(userId, Status.UNCONFIRMED_RENTAL.getCode())
-                .orElseThrow(()-> new DataNotFoundException("Hetkel pole ühtegi avatud tellimust, loo uus tellimus", 999));
+                .orElseThrow(() -> new DataNotFoundException("Hetkel pole ühtegi avatud tellimust, loo uus tellimus", 999));
         return orderMapper.toOrderResponse(order);
     }
 
