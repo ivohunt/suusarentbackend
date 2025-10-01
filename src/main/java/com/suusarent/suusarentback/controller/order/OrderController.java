@@ -25,6 +25,7 @@ public class OrderController {
 
     @GetMapping("/order/open")
     public OrderResponse getOpenOrder(@RequestParam Integer userId) {
+
         return orderService.getOpenOrder(userId);
     }
 
