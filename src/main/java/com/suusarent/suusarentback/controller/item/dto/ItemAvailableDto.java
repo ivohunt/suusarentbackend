@@ -11,12 +11,15 @@ public class ItemAvailableDto {
     private String status;
     private String notes;
     private Integer equipmentSizeId;
+    private String equipmentSizeName;
 
-    public ItemAvailableDto(Item itemId) {
-        this.itemId = itemId.getId();
-        this.status = itemId.getStatus();
-        this.notes = itemId.getNotes();
-        this.equipmentSizeId = itemId.getEquipmentSize().getId();
+    public ItemAvailableDto(Item item) {
+        this.itemId = item.getId();
+        this.status = item.getStatus();
+        this.notes = item.getNotes();
+        if (item.getEquipmentSize() != null) {
+            this.equipmentSizeId = item.getEquipmentSize().getId();
+            this.equipmentSizeName = item.getEquipmentSize().getName();
+        }
     }
-
 }

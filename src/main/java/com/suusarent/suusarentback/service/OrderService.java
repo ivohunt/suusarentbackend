@@ -24,6 +24,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -143,6 +144,13 @@ public class OrderService {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new PrimaryKeyNotFoundException("orderId", orderId));
         return orderMapper.toOrderResponse(order);
+    }
+
+    public void updateOrderStatus(Integer orderId, String status) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new PrimaryKeyNotFoundException("orderId", orderId));
+        order.setStatus(status);
+        orderRepository.save(order);
     }
 
 

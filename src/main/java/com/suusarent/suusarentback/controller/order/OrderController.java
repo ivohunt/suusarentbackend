@@ -35,24 +35,20 @@ public class OrderController {
         return orderService.createOrder(orderRequestDto);
     }
 
-    @PostMapping("/{orderId}/items")
-    public OrderItemsResponse addItemToOrder(
-            @PathVariable Integer orderId,
-            @RequestBody AddOrderItemRequest request) {
-
-        return orderService.addItemToOrder(orderId, request.getItemId());
-    }
-
     @GetMapping("/order/open")
     public OrderResponse getOpenOrder(@RequestParam Integer userId) {
         return orderService.getOpenOrder(userId);
+    }
+
+    @PatchMapping("/order")
+    public void updateOrderStatus(@RequestParam Integer orderId, String status) {
+        orderService.updateOrderStatus(orderId, status);
     }
 
     @GetMapping("/order/existing")
     public OrderResponse getExistingOrder(@RequestParam Integer orderId) {
         return orderService.getExistingOrder(orderId);
     }
-
 
 
     @GetMapping("/available-categories-with-items")

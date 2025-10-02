@@ -15,7 +15,7 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
     boolean categoryExistsBy(String categoryName);
 
 
-    @EntityGraph(attributePaths = "items")
+    @EntityGraph(attributePaths = {"items", "items.equipmentSize"})
     @Query("""
                 SELECT DISTINCT c
                 FROM Category c

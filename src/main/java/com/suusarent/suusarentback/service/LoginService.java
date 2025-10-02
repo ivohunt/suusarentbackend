@@ -39,8 +39,6 @@ public class LoginService {
         loginResponse.setUserHasOpenOrder(userHasOpenOrder);
         if (userHasOpenOrder) {
             loginResponse.setOrderId(optionalOrder.get().getId());
-        } else {
-
         }
     }
 
