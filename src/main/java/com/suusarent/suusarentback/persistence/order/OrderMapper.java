@@ -1,5 +1,6 @@
 package com.suusarent.suusarentback.persistence.order;
 
+import com.suusarent.suusarentback.controller.order.dto.CustomerOrder;
 import com.suusarent.suusarentback.controller.order.dto.OrderDatesInfo;
 import com.suusarent.suusarentback.controller.order.dto.OrderDto;
 import com.suusarent.suusarentback.controller.order.dto.OrderResponse;
@@ -37,5 +38,8 @@ public interface OrderMapper {
     @Mapping(source = "status", target = "status")
     @Mapping(source = "totalPrice", target = "totalPrice")
     OrderResponse toOrderResponse(Order order);
+
+
+    CustomerOrder toCustomerOrder(Order order);
 }
 

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
@@ -14,22 +15,15 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderEditInfo implements Serializable {
-    @NotNull
+public class CustomerOrder implements Serializable {
     private String orderNumber;
-    @NotNull
     private LocalDate start;
-    @NotNull
     private LocalDate end;
-    @NotNull
     private String status;
-    @NotNull
     private String userFirstName;
-    @NotNull
     private String userLastName;
-    @NotNull
     private String userPhone;
-    @NotNull
     private String userEmail;
+    private BigDecimal totalPrice;
 
 }

@@ -17,11 +17,11 @@ public interface ItemMapper {
 //    @Mapping(source = "notes", target = "notes")
 //
 
-
     @Mapping(expression = "java(Status.ACTIVE_ITEM.getCode())", target = "status")
     @Mapping(source = "notes", target = "notes")
     @Mapping(expression = "java(Instant.now())", target = "createdAt")
     @Mapping(expression = "java(Instant.now())", target = "updatedAt")
     @Mapping(constant = "true", target = "isAvailable")
     Item toItem(ItemDto itemDto);
+
 }

@@ -2,6 +2,7 @@ package com.suusarent.suusarentback.service;
 
 import com.suusarent.suusarentback.controller.order.dto.OrderItemRequestDto;
 import com.suusarent.suusarentback.controller.order.dto.OrderItemsResponse;
+import com.suusarent.suusarentback.controller.orderitem.dto.OrderItemInfo;
 import com.suusarent.suusarentback.persistence.item.Item;
 import com.suusarent.suusarentback.persistence.item.ItemRepository;
 import com.suusarent.suusarentback.persistence.order.Order;
@@ -10,6 +11,8 @@ import com.suusarent.suusarentback.persistence.orderitem.OrderItem;
 import com.suusarent.suusarentback.persistence.orderitem.OrderItemMapper;
 import com.suusarent.suusarentback.persistence.orderitem.OrderItemRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrderItemService {
@@ -46,4 +49,8 @@ public class OrderItemService {
         return orderItemMapper.toOrderItemResponse(saved);
     }
 
+    public List<OrderItemInfo> findOrderItems(Integer orderId) {
+        List<OrderItem> orderItems = orderItemRepository.findByOrderId(orderId);
+        return orderItemMapper.toOrderItemInfos(orderItems);
+    }
 }

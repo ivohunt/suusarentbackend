@@ -39,6 +39,12 @@ public class OrderService {
     private final OrderItemRepository orderItemRepository;
     private final OrderItemMapper orderItemMapper;
 
+    public List<OrderDto> findAllOrders() {
+        List<Order> orders = orderRepository.findAll();
+        return orderMapper.toOrderInfos(orders);
+
+    }
+
     public Integer createOrder(OrderRequestDto dto) {
         User user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new RuntimeException("Kasutajat ei leitud ID-ga: " + dto.getUserId()));
@@ -152,4 +158,21 @@ public class OrderService {
     }
 
 
+    public CustomerOrder findCustomerOrder(Integer orderId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new DataNotFoundException("Tellimust ei leitud", 999));
+        ;
+
+        User customer = userRepository.findById(order.getUser().getId())
+                .orElseThrow(() -> new DataNotFoundException("Klienti ei leitud", 999));
+        ;
+
+        CustomerOrder customerOrder = orderMapper.toCustomerOrder(order);
+        customerOrder.setUserFirstName(customer.getFirstName());
+        customerOrder.setUserLastName(customer.getLastName());
+        customerOrder.setUserEmail(customer.getEmail());
+        customerOrder.setUserPhone(customer.getPhone());
+
+        return customerOrder;
+    }
 }
