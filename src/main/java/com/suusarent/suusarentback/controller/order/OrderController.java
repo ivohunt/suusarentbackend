@@ -23,9 +23,9 @@ public class OrderController {
         return orderService.findAllOrders();
     }
 
-    @GetMapping("/order/customer/{orderId}")
+    @GetMapping("/order/customer")
     @Operation(summary = "Leiab orderId järgi kliendi tellimuse info")
-    public CustomerOrder findCustomerOrder(@PathVariable Integer orderId) {
+    public CustomerOrder findCustomerOrder(@RequestParam Integer orderId) {
         return orderService.findCustomerOrder(orderId);
     }
 

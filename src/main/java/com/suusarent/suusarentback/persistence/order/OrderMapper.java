@@ -39,6 +39,7 @@ public interface OrderMapper {
     @Mapping(source = "totalPrice", target = "totalPrice")
     OrderResponse toOrderResponse(Order order);
 
-    CustomerOrder toCustomerOrder(Order customerOrder);
+
+    CustomerOrder toCustomerOrder(Order order);
 }
 

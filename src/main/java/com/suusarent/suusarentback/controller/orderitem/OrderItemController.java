@@ -2,6 +2,7 @@ package com.suusarent.suusarentback.controller.orderitem;
 
 import com.suusarent.suusarentback.controller.order.dto.OrderItemRequestDto;
 import com.suusarent.suusarentback.controller.order.dto.OrderItemsResponse;
+import com.suusarent.suusarentback.controller.orderitem.dto.OrderItemInfo;
 import com.suusarent.suusarentback.persistence.orderitem.OrderItem;
 import com.suusarent.suusarentback.service.OrderItemService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/order-items")
 public class OrderItemController {
 
     private final OrderItemService orderItemService;
@@ -21,16 +21,15 @@ public class OrderItemController {
         this.orderItemService = orderItemService;
     }
 
-    @PostMapping
+    @PostMapping("/order-items")
     public OrderItemsResponse addItem(@RequestBody OrderItemRequestDto dto) {
         OrderItemsResponse response = orderItemService.addItemToOrder(dto);
         return response;
     }
 
-    @GetMapping("/order/")
+    @GetMapping("/order-items")
     @Operation(summary = "Leiab orderId järgi itemite info.")
-    public List<OrderItem> findOrderItems(@RequestParam Integer orderId) {
-        List<OrderItem> orderItems = orderItemService.findOrderItems(orderId);
-        return orderItems;
+    public List<OrderItemInfo> findOrderItems(@RequestParam Integer orderId) {
+        return orderItemService.findOrderItems(orderId);
     }
 }
