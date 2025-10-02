@@ -6,9 +6,9 @@ import lombok.Getter;
 public enum Status {
     ACTIVE_USER("A"),
     DELETED_USER("D"),
-    PENDING_RENTAL("Ostukorv"),
-    UNCONFIRMED_RENTAL("Kinnitamata"),
-    CONFIRMED_RENTAL("Kinnitatud"),
+    PENDING_RENTAL("Kasutaja kinnitatud"),
+    UNCONFIRMED_RENTAL("Kasutaja kinnitatud"),
+    CONFIRMED_RENTAL("Admini kinnitatud"),
     ACTIVE_RENTAL("Aktiivne"),
     FINISHED("Lõpetatud"),
     ACTIVE_ITEM("Aktiivne"),

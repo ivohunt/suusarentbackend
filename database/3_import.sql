@@ -3,7 +3,7 @@ INSERT INTO suusarent."role" (id, name) VALUES (default, 'customer');
 
 
 INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, email, password, status, created_at) VALUES (default,1 ,'Hea','Admin','123456','admin@admin.ee', '123','A','2025-10-01 08:36:15.174480');
-INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'customer@customer.ee', 'A', '2025-10-01 08:36:15.174480');
+INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'customer', 'A', '2025-10-01 08:36:15.174480');
 INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'klient1', 'A', '2025-10-01 08:36:15.174480');
 INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'klient2', 'A', '2025-10-01 08:36:15.174480');
 INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'klient3', 'A', '2025-10-01 08:36:15.174480');
@@ -90,20 +90,32 @@ INSERT INTO suusarent.item (id, category_id, equipment_size_id, status, notes, c
 INSERT INTO suusarent.item (id, category_id, equipment_size_id, status, notes, created_at, updated_at, is_available) VALUES (default, 5, 25, 'Aktiivne', '', '2025-10-02 13:57:53.068967', '2025-10-02 13:57:53.068967', true);
 INSERT INTO suusarent.item (id, category_id, equipment_size_id, status, notes, created_at, updated_at, is_available) VALUES (default, 5, 26, 'Aktiivne', '', '2025-10-02 13:57:56.492875', '2025-10-02 13:57:56.492875', true);
 
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000023','2025-09-21','2025-11-06','Kasutaja kinnitatud',40,2,'2025-10-02 14:08:50.700551','2025-10-02 14:08:50.700551');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000045','2025-09-28','2025-09-30','Lõpetatud',120,2,'2025-10-02 14:08:50.700551','2025-10-02 14:08:50.700551');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000023', '2025-09-21', '2025-09-25', 'Kasutaja kinnitatud', 40.00, 5, '2025-10-02 14:08:50.700551', '2025-10-02 14:08:50.700551');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000045', '2025-09-23', '2025-09-27', 'Admini kinnitatud', 120.00, 7, '2025-10-02 14:08:50.700551', '2025-10-02 14:08:50.700551');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000003', '2025-10-06', '2025-10-17', 'Kasutaja kinnitatud', 60.00, 6, '2025-10-02 14:10:33.500604', '2025-10-02 14:10:33.500604');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000058', '2025-09-21', '2025-09-25', 'Aktiivne', 40.00, 3, '2025-10-02 14:08:50.700551', '2025-10-02 14:08:50.700551');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000032', '2025-09-23', '2025-09-27', 'Admini kinnitatud', 120.00, 4, '2025-10-02 14:08:50.700551', '2025-10-02 14:08:50.700551');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000013', '2025-10-06', '2025-10-17', 'Lõpetatud', 90.00, 8, '2025-10-02 14:10:33.500604', '2025-10-02 14:10:33.500604');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000059', '2025-10-03', '2025-10-05', 'Kasutaja kinnitatud', 50.00, 2, '2025-10-02 14:20:00.000000', '2025-10-02 14:20:00.000000');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000060', '2025-10-04', '2025-10-06', 'Aktiivne', 70.00, 3, '2025-10-02 14:21:00.000000', '2025-10-02 14:21:00.000000');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000061', '2025-10-05', '2025-10-08', 'Kasutaja kinnitatud', 60.00, 4, '2025-10-02 14:22:00.000000', '2025-10-02 14:22:00.000000');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000062', '2025-10-06', '2025-10-09', 'Lõpetatud', 80.00, 5, '2025-10-02 14:23:00.000000', '2025-10-02 14:23:00.000000');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000063', '2025-10-07', '2025-10-10', 'Admini kinnitatud', 90.00, 6, '2025-10-02 14:24:00.000000', '2025-10-02 14:24:00.000000');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000064', '2025-10-08', '2025-10-11', 'Kasutaja kinnitatud', 55.00, 7, '2025-10-02 14:25:00.000000', '2025-10-02 14:25:00.000000');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000065', '2025-10-09', '2025-10-12', 'Aktiivne', 65.00, 8, '2025-10-02 14:26:00.000000', '2025-10-02 14:26:00.000000');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000066', '2025-10-10', '2025-10-13', 'Kasutaja kinnitatud', 75.00, 9, '2025-10-02 14:27:00.000000', '2025-10-02 14:27:00.000000');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000067', '2025-10-11', '2025-10-14', 'Lõpetatud', 85.00, 10, '2025-10-02 14:28:00.000000', '2025-10-02 14:28:00.000000');
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000068', '2025-10-12', '2025-10-15', 'Admini kinnitatud', 95.00, 11, '2025-10-02 14:29:00.000000', '2025-10-02 14:29:00.000000');
+`
 
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000023','21/09/2025','25/09/2025','Ostukorv',40,2,now(),now());
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000045','23/09/2025','27/09/2025','Kinnitatud',120,2,now(),now());
+
+
+
 
 INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 1, 1, '2025-10-02 13:14:24.000000', 20.00);
 INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 1, 2, '2025-10-02 13:14:24.000000', 20.00);
-
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000023', '2025-09-21', '2025-09-25', 'Ostukorv', 40.00, 2, '2025-10-02 14:08:50.700551', '2025-10-02 14:08:50.700551');
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000045', '2025-09-23', '2025-09-27', 'Kinnitatud', 120.00, 7, '2025-10-02 14:08:50.700551', '2025-10-02 14:08:50.700551');
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000003', '2025-10-06', '2025-10-17', 'Kinnitamata', 60.00, 6, '2025-10-02 14:10:33.500604', '2025-10-02 14:10:33.500604');
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000058', '2025-09-21', '2025-09-25', 'Aktiivne', 40.00, 3, '2025-10-02 14:08:50.700551', '2025-10-02 14:08:50.700551');
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000032', '2025-09-23', '2025-09-27', 'Kinnitatud', 120.00, 4, '2025-10-02 14:08:50.700551', '2025-10-02 14:08:50.700551');
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000013', '2025-10-06', '2025-10-17', 'Lõpetatud', 90.00, 8, '2025-10-02 14:10:33.500604', '2025-10-02 14:10:33.500604');
-
 
 INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 1, 1, '2025-10-02 13:14:24.000000', 20.00);
 INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 1, 2, '2025-10-02 13:14:24.000000', 20.00);
@@ -122,3 +134,15 @@ INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALU
 INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 6, 13, '2025-10-02 17:46:02.000000', 14.00);
 INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 7, 15, '2025-10-02 17:46:02.000000', 14.00);
 INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 7, 21, '2025-10-02 17:46:02.000000', 14.00);
+INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 8, 1, '2025-10-03 10:00:00.000000', 20.00);
+INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 8, 2, '2025-10-03 10:01:00.000000', 20.00);
+INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 9, 3, '2025-10-03 11:00:00.000000', 15.00);
+INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 9, 4, '2025-10-03 11:01:00.000000', 15.00);
+INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 10, 5, '2025-10-03 12:00:00.000000', 25.00);
+INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 10, 6, '2025-10-03 12:01:00.000000', 25.00);
+INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 11, 7, '2025-10-03 13:00:00.000000', 20.00);
+INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 11, 8, '2025-10-03 13:01:00.000000', 20.00);
+INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 12, 9, '2025-10-03 14:00:00.000000', 18.00);
+INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 12, 10, '2025-10-03 14:01:00.000000', 22.00);
+
+
