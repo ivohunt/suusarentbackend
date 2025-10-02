@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderEditInfo implements Serializable {
+public class CustomerOrder implements Serializable {
     @NotNull
     private String orderNumber;
     @NotNull

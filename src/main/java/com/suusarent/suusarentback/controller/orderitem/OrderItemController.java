@@ -2,13 +2,14 @@ package com.suusarent.suusarentback.controller.orderitem;
 
 import com.suusarent.suusarentback.controller.order.dto.OrderItemRequestDto;
 import com.suusarent.suusarentback.controller.order.dto.OrderItemsResponse;
+import com.suusarent.suusarentback.persistence.orderitem.OrderItem;
 import com.suusarent.suusarentback.service.OrderItemService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/order-items")
@@ -24,5 +25,12 @@ public class OrderItemController {
     public ResponseEntity<OrderItemsResponse> addItem(@RequestBody OrderItemRequestDto dto) {
         OrderItemsResponse response = orderItemService.addItemToOrder(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/order/")
+    @Operation(summary = "Leiab orderId järgi itemite info.")
+    public ResponseEntity<List<OrderItem>> findOrderItems(@RequestParam Integer orderId) {
+        ResponseEntity <List<OrderItem>> orderItems = orderItemService.findOrderItems(orderId);
+        return ResponseEntity.ok (orderItems);
     }
 }

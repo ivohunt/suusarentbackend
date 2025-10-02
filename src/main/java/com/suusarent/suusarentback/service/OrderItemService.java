@@ -9,7 +9,10 @@ import com.suusarent.suusarentback.persistence.order.OrderRepository;
 import com.suusarent.suusarentback.persistence.orderitem.OrderItem;
 import com.suusarent.suusarentback.persistence.orderitem.OrderItemMapper;
 import com.suusarent.suusarentback.persistence.orderitem.OrderItemRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrderItemService {
@@ -46,4 +49,8 @@ public class OrderItemService {
         return orderItemMapper.toOrderItemResponse(saved);
     }
 
+    public ResponseEntity<List<OrderItem>> findOrderItems(Integer orderId) {
+        List<OrderItem> orderItems = orderItemRepository.findByOrderId(orderId);
+            return ResponseEntity.ok (orderItems);
+        }
 }

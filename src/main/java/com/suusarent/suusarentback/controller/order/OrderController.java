@@ -17,6 +17,18 @@ public class OrderController {
 
     private final OrderService orderService;
 
+    @GetMapping("/orders/all")
+    @Operation(summary = "Leiab adminile kõik olemasolevad tellimused")
+    public List<OrderDto> findAllOrders() {
+        return orderService.findAllOrders();
+    }
+
+    @GetMapping("/order/customer/{orderId}")
+    @Operation(summary = "Leiab orderId järgi kliendi tellimuse info")
+    public CustomerOrder findCustomerOrder(@PathVariable Integer orderId) {
+        return orderService.findCustomerOrder(orderId);
+    }
+
     @PostMapping("/order")
     @Operation(description = "Laenutuse kuupäevade lisamine ja order entity loomine")
     public OrderResponse createOrder(@RequestBody @Valid OrderRequestDto orderRequestDto) {
@@ -46,7 +58,7 @@ public class OrderController {
 
     @GetMapping("/order-history")
     @Operation(summary = "Leiab userId järgi olemasolevad kasutaja tellimused")
-    public List<OrderDto> findOrders(@RequestParam Integer userId) {
+    public List<OrderDto> findAllOrders(@RequestParam Integer userId) {
         return orderService.findOrders(userId);
     }
 

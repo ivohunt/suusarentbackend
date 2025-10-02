@@ -23,5 +23,4 @@ public interface OrderItemMapper {
     @Mapping(expression = "java(Instant.now())", target = "timestamps")
     OrderItem toOrderItem(OrderItemRequestDto dto);
 
-
 }
