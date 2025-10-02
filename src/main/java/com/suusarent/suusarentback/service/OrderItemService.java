@@ -49,8 +49,8 @@ public class OrderItemService {
         return orderItemMapper.toOrderItemResponse(saved);
     }
 
-    public ResponseEntity<List<OrderItem>> findOrderItems(Integer orderId) {
+    public List<OrderItem> findOrderItems(Integer orderId) {
         List<OrderItem> orderItems = orderItemRepository.findByOrderId(orderId);
-            return ResponseEntity.ok (orderItems);
+            return null;
         }
 }

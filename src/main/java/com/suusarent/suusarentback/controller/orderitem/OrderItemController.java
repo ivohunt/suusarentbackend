@@ -22,15 +22,15 @@ public class OrderItemController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderItemsResponse> addItem(@RequestBody OrderItemRequestDto dto) {
+    public OrderItemsResponse addItem(@RequestBody OrderItemRequestDto dto) {
         OrderItemsResponse response = orderItemService.addItemToOrder(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return response;
     }
 
     @GetMapping("/order/")
     @Operation(summary = "Leiab orderId järgi itemite info.")
-    public ResponseEntity<List<OrderItem>> findOrderItems(@RequestParam Integer orderId) {
-        ResponseEntity <List<OrderItem>> orderItems = orderItemService.findOrderItems(orderId);
-        return ResponseEntity.ok (orderItems);
+    public List<OrderItem> findOrderItems(@RequestParam Integer orderId) {
+        List<OrderItem> orderItems = orderItemService.findOrderItems(orderId);
+        return orderItems;
     }
 }
