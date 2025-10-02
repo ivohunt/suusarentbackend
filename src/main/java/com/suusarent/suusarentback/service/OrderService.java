@@ -45,7 +45,7 @@ public class OrderService {
 
     }
 
-    public OrderResponse createOrder(OrderRequestDto dto) {
+    public Integer createOrder(OrderRequestDto dto) {
         User user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new RuntimeException("Kasutajat ei leitud ID-ga: " + dto.getUserId()));
 
@@ -71,7 +71,8 @@ public class OrderService {
         orderRepository.save(order);
         order.setOrderNumber(generateOrderNumber(order.getId()));
         orderRepository.save(order);
-        return orderMapper.toOrderResponse(order);
+
+        return order.getId();
     }
 
 
@@ -136,27 +137,12 @@ public class OrderService {
         return orderMapper.toOrderResponse(order);
     }
 
-
-    private void generateAndSetOrderNumber(Order order) {
-        Integer orderId = order.getId();
-        order.setOrderNumber(generateOrderNumber(orderId));
+    public OrderResponse getExistingOrder(Integer orderId) {
+        Order order = orderRepository.findOrderBy(orderId, Status.UNCONFIRMED_RENTAL.getCode())
+                .orElseThrow(() -> new DataNotFoundException("Ei leitud tellimust", 998));
+        return orderMapper.toOrderResponse(order);
     }
 
-    private void setAndSaveOrderInitialValues(Integer userId, Order order) {
-        order.setCreatedAt(Instant.now());
-        order.setUpdatedAt(Instant.now());
-        order.setStatus(Status.UNCONFIRMED_RENTAL.getCode());
-        order.setOrderNumber("TBC");
-        BigDecimal totalPrice = BigDecimal.valueOf(000.00);
-        order.setTotalPrice(totalPrice);
-        findAndSetUser(userId, order);
-        orderRepository.save(order);
-    }
-
-    private void findAndSetUser(Integer userId, Order order) {
-        User user = userRepository.findUserById(userId);
-        order.setUser(user);
-    }
 
     private String generateOrderNumber(Integer orderId) {
         String prefix = "SR";

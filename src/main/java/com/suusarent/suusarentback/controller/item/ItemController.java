@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class ItemController {
 
     private final ItemService itemService;
 
-    @PostMapping("/item-add")
+    @PostMapping("/item")
     @Operation(summary = "Uue varustusühiku lisamine.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),

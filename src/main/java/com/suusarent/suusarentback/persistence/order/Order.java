@@ -21,8 +21,8 @@ public class Order {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 10)
-    @Column(name = "order_number", length = 10)
+    @Size(max = 20)
+    @Column(name = "order_number", length = 20)
     private String orderNumber;
 
     @Column(name = "start")
@@ -31,9 +31,9 @@ public class Order {
     @Column(name = "\"end\"")
     private LocalDate end;
 
-    @Size(max = 10)
+    @Size(max = 20)
     @NotNull
-    @Column(name = "status", nullable = false, length = 10)
+    @Column(name = "status", nullable = false, length = 20)
     private String status;
 
     @NotNull

@@ -31,14 +31,8 @@ public class OrderController {
 
     @PostMapping("/order")
     @Operation(description = "Laenutuse kuupäevade lisamine ja order entity loomine")
-    public OrderResponse createOrder(@RequestBody @Valid OrderRequestDto orderRequestDto) {
+    public Integer createOrder(@RequestBody @Valid OrderRequestDto orderRequestDto) {
         return orderService.createOrder(orderRequestDto);
-    }
-
-    @GetMapping("/order/open")
-    public OrderResponse getOpenOrder(@RequestParam Integer userId) {
-
-        return orderService.getOpenOrder(userId);
     }
 
     @PostMapping("/{orderId}/items")
@@ -48,6 +42,20 @@ public class OrderController {
 
         return orderService.addItemToOrder(orderId, request.getItemId());
     }
+
+    @GetMapping("/order/open")
+    public OrderResponse getOpenOrder(@RequestParam Integer userId) {
+
+        return orderService.getOpenOrder(userId);
+    }
+
+    @GetMapping("/order/existing")
+    public OrderResponse getExistingOrder(@RequestParam Integer orderId) {
+
+        return orderService.getExistingOrder(orderId);
+    }
+
+
 
     @GetMapping("/available-categories-with-items")
     public List<CategoryWithItemsDto> getAvailableCategoriesWithItems(

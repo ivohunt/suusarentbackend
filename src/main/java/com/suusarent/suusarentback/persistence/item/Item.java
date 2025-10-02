@@ -25,6 +25,11 @@ public class Item {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @NotNull
+    @ManyToOne()
+    @JoinColumn(name = "equipment_size_id")
+    private EquipmentSize equipmentSize;
+
     @Size(max = 10)
     @NotNull
     @Column(name = "status", nullable = false, length = 10)
@@ -33,11 +38,6 @@ public class Item {
     @Size(max = 500)
     @Column(name = "notes", length = 500)
     private String notes;
-
-    @NotNull
-    @ManyToOne()
-    @JoinColumn(name = "equipment_size_id")
-    private EquipmentSize equipmentSize;
 
     @NotNull
     @Column(name = "created_at", nullable = false)

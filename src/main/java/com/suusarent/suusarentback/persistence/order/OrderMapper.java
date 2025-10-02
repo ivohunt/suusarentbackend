@@ -32,7 +32,11 @@ public interface OrderMapper {
     List<OrderDto> toOrderInfos(List<Order> orders);
 
     @Mapping(source = "id", target = "orderId")
-    @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "orderNumber", target = "orderNumber")
+    @Mapping(source = "start", target = "start")
+    @Mapping(source = "end", target = "end")
+    @Mapping(source = "status", target = "status")
+    @Mapping(source = "totalPrice", target = "totalPrice")
     OrderResponse toOrderResponse(Order order);
 
     CustomerOrder toCustomerOrder(Order customerOrder);
