@@ -53,7 +53,7 @@ INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (
 INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000023','21/09/2025','25/09/2025','Kinnitamata',120,2,now(),now());
 INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000045','23/09/2025','27/09/2025','Kinnitatud',120,2,now(),now());
 
-
+INSERT INTO suusarent.item (id, category_id, status, notes, equipment_size_id, created_at, updated_at, is_available) VALUES (default, 1, 'Aktiivne', 'Pole', 1, '2025-10-02 11:19:09.000000', '2025-10-02 11:19:11.000000', true);
 
 
 
