@@ -2,8 +2,8 @@ INSERT INTO suusarent."role" (id, name) VALUES (default,  'admin');
 INSERT INTO suusarent."role" (id, name) VALUES (default, 'customer');
 
 
-INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, email, password, status, created_at) VALUES (default,1 ,'Hea','Admin','123456','admin', '123','A','2025-10-01 08:36:15.174480');
-INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'customer', 'A', '2025-10-01 08:36:15.174480');
+INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, email, password, status, created_at) VALUES (default,1 ,'Hea','Admin','123456','admin@admin.ee', '123','A','2025-10-01 08:36:15.174480');
+INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'customer@customer.ee', 'A', '2025-10-01 08:36:15.174480');
 INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'klient1', 'A', '2025-10-01 08:36:15.174480');
 INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'klient2', 'A', '2025-10-01 08:36:15.174480');
 INSERT INTO suusarent."user" (id, role_id, first_name, last_name, phone, password, email, status, created_at) VALUES (default, 2, 'Veel Üks', 'Hea Klient', '123456', '123', 'klient3', 'A', '2025-10-01 08:36:15.174480');
@@ -57,7 +57,6 @@ INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (
 INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (default,'130-150cm',3,100);
 INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (default,'151-170cm',3,200);
 INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (default,'171-200cm',3,300);
-
 INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (default,'S',4,100);
 INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (default,'M',4,200);
 INSERT INTO suusarent.equipment_size (id, name, size_type_id, sequence) VALUES (default,'L',4,300);
