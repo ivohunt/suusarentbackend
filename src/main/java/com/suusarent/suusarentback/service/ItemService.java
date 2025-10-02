@@ -28,9 +28,8 @@ public class ItemService {
     private final CategoryRepository categoryRepository;
 
     public void addItem(ItemDto itemDto) {
-
         Item item = createAndSaveItem(itemDto);
-        handleItemImage(itemDto, item);
+        handleAddItemImage(itemDto, item);
     }
 
     private Item createAndSaveItem(ItemDto itemDto) {
@@ -52,12 +51,18 @@ public class ItemService {
     }
 
 
-    private void handleItemImage(ItemDto itemDto, Item item) {
-        // IMAGE
+    private void handleAddItemImage(ItemDto itemDto, Item item) {
+        if (!itemDto.getItemImageData().isEmpty()) {
+            ItemImage itemImage = createItemImage(itemDto, item);
+            itemImageRepository.save(itemImage);
+        }
+    }
+
+    private static ItemImage createItemImage(ItemDto itemDto, Item item) {
         ItemImage itemImage = new ItemImage();
         itemImage.setData(BytesConverter.stringToBytes(itemDto.getItemImageData()));
         itemImage.setItem(item);
-        itemImageRepository.save(itemImage);
+        return itemImage;
     }
 
 
