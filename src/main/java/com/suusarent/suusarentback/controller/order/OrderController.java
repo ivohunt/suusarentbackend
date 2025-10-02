@@ -18,9 +18,9 @@ public class OrderController {
     private final OrderService orderService;
 
     @GetMapping("/orders/all")
-    @Operation(summary = "Leiab adminile kõik olemasolevad tellimused")
-    public List<OrderDto> findAllOrders() {
-        return orderService.findAllOrders();
+    @Operation(summary = "Leiab adminile statuse järgi vastavad tellimused")
+    public List<OrderDto> findAllOrders(@RequestParam String status) {
+        return orderService.findOrders(status);
     }
 
     @GetMapping("/order/customer")
@@ -45,13 +45,11 @@ public class OrderController {
 
     @GetMapping("/order/open")
     public OrderResponse getOpenOrder(@RequestParam Integer userId) {
-
         return orderService.getOpenOrder(userId);
     }
 
     @GetMapping("/order/existing")
     public OrderResponse getExistingOrder(@RequestParam Integer orderId) {
-
         return orderService.getExistingOrder(orderId);
     }
 

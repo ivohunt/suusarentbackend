@@ -56,7 +56,7 @@ INSERT INTO suusarent.item (id, category_id, equipment_size_id, status, notes, c
 INSERT INTO suusarent.item (id, category_id, equipment_size_id, status, notes, created_at, updated_at, is_available) VALUES (default, 1, 2, 'Aktiivne', 'Uued punased Rossignolid (keskmised)', '2025-10-02 13:11:09.000000', '2025-10-02 13:11:09.000000', true);
 
 
-INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000023','21/09/2025','25/09/2025','Kinnitamata',40,2,now(),now());
+INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000023','21/09/2025','25/09/2025','Ostukorv',40,2,now(),now());
 INSERT INTO suusarent."order" (id, order_number, start, "end", status, total_price, user_id, created_at, updated_at) VALUES (default, 'SR000045','23/09/2025','27/09/2025','Kinnitatud',120,2,now(),now());
 
 INSERT INTO suusarent.order_item (id, order_id, item_id, timestamps, price) VALUES (default, 1, 1, '2025-10-02 13:14:24.000000', 20.00);

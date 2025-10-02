@@ -33,7 +33,7 @@ public class LoginService {
     }
 
     private void handleAddOpenOrderInfo(User user, LoginResponse loginResponse) {
-        Optional<Order> optionalOrder = orderRepository.findOrderBy(user.getId(), Status.UNCONFIRMED_RENTAL.getCode());
+        Optional<Order> optionalOrder = orderRepository.findOrderBy(user.getId(), Status.PENDING_RENTAL.getCode());
         boolean userHasOpenOrder = optionalOrder.isPresent();
 
         loginResponse.setUserHasOpenOrder(userHasOpenOrder);

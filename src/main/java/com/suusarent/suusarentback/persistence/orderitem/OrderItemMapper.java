@@ -25,6 +25,7 @@ public interface OrderItemMapper {
     @Mapping(expression = "java(Instant.now())", target = "timestamps")
     OrderItem toOrderItem(OrderItemRequestDto dto);
 
+    @Mapping(source = "id", target = "orderItemId")
     @Mapping(source = "item.category.name", target = "categoryName")
     @Mapping(source = "item.equipmentSize.name", target = "equipmentSize")
     @Mapping(source = "price", target = "price")

@@ -3,6 +3,7 @@ package com.suusarent.suusarentback.service;
 import com.suusarent.suusarentback.Status;
 import com.suusarent.suusarentback.controller.order.dto.*;
 import com.suusarent.suusarentback.infrastructure.exception.DataNotFoundException;
+import com.suusarent.suusarentback.infrastructure.exception.PrimaryKeyNotFoundException;
 import com.suusarent.suusarentback.persistence.category.Category;
 import com.suusarent.suusarentback.persistence.category.CategoryRepository;
 import com.suusarent.suusarentback.persistence.item.Item;
@@ -39,8 +40,8 @@ public class OrderService {
     private final OrderItemRepository orderItemRepository;
     private final OrderItemMapper orderItemMapper;
 
-    public List<OrderDto> findAllOrders() {
-        List<Order> orders = orderRepository.findAll();
+    public List<OrderDto> findOrders(String status) {
+        List<Order> orders = orderRepository.findOrdersBy(status);
         return orderMapper.toOrderInfos(orders);
 
     }
@@ -61,7 +62,7 @@ public class OrderService {
         Order order = new Order();
         order.setStart(startDate);
         order.setEnd(endDate);
-        order.setStatus(Status.UNCONFIRMED_RENTAL.getCode());
+        order.setStatus(Status.PENDING_RENTAL.getCode());
         order.setUser(user);
 
         order.setTotalPrice(BigDecimal.valueOf(000.00));
@@ -132,14 +133,15 @@ public class OrderService {
     }
 
     public OrderResponse getOpenOrder(Integer userId) {
-        Order order = orderRepository.findOrderBy(userId, Status.UNCONFIRMED_RENTAL.getCode())
+        Order order = orderRepository.findOrderBy(userId, Status.PENDING_RENTAL.getCode())
                 .orElseThrow(() -> new DataNotFoundException("Hetkel pole ühtegi avatud tellimust, loo uus tellimus", 999));
+
         return orderMapper.toOrderResponse(order);
     }
 
     public OrderResponse getExistingOrder(Integer orderId) {
-        Order order = orderRepository.findOrderBy(orderId, Status.UNCONFIRMED_RENTAL.getCode())
-                .orElseThrow(() -> new DataNotFoundException("Ei leitud tellimust", 998));
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new PrimaryKeyNotFoundException("orderId", orderId));
         return orderMapper.toOrderResponse(order);
     }
 
